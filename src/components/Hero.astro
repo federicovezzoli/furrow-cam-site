@@ -1,0 +1,45 @@
+---
+import { RELEASES_URL, REPO_URL, SIGN_UP_URL } from "../lib/links";
+
+// A closed contour and the tool's offset paths around it, like a profile toolpath.
+const offsets = [0, 10, 20, 30];
+---
+
+<section class="mx-auto grid max-w-5xl items-center gap-12 px-6 py-20 md:grid-cols-[3fr_2fr] md:py-28">
+  <div>
+    <a href={RELEASES_URL} class="inline-block border border-line px-2 py-0.5 text-xs text-muted hover:text-fg">
+      Alpha · open source
+    </a>
+    <h1 class="mt-6 text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
+      2.5D CAM for CNC routers, in your browser.
+    </h1>
+    <p class="mt-6 max-w-xl text-base text-muted">
+      Import an SVG or DXF, set up profile, pocket, drill, engrave and V-carve operations, preview
+      every cut, and export G-code for GRBL-compatible machines. No install, free and MIT-licensed.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href={SIGN_UP_URL} class="bg-accent px-4 py-2.5 text-accent-fg hover:opacity-90">Create a free account</a>
+      <a href={REPO_URL} class="border border-line px-4 py-2.5 hover:bg-subtle">View on GitHub</a>
+    </div>
+  </div>
+
+  <svg viewBox="0 0 200 200" class="w-full max-w-xs justify-self-center text-muted" aria-hidden="true">
+    {
+      offsets.map((d, i) => (
+        <rect
+          x={50 - d}
+          y={50 - d}
+          width={100 + 2 * d}
+          height={100 + 2 * d}
+          rx={d}
+          fill="none"
+          stroke="currentColor"
+          stroke-width={i === 0 ? 2 : 1}
+          stroke-dasharray={i === 0 ? undefined : "4 4"}
+          class={i === 0 ? "text-fg" : undefined}
+        />
+      ))
+    }
+    <circle cx="80" cy="20" r="3" fill="currentColor" class="text-fg" />
+  </svg>
+</section>

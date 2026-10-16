@@ -1,0 +1,13 @@
+---
+import { APP_URL, REPO_URL } from "../lib/links";
+---
+
+<header class="border-b border-line">
+  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
+    <a href="/" class="font-semibold tracking-tight">furrow<span class="text-muted">.cam</span></a>
+    <nav class="flex items-center gap-5">
+      <a href={REPO_URL} class="text-muted hover:text-fg">GitHub</a>
+      <a href={APP_URL} class="bg-accent px-3 py-1.5 text-accent-fg hover:opacity-90">Open the app</a>
+    </nav>
+  </div>
+</header>

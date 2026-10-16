@@ -1,0 +1,16 @@
+---
+import { AUTHOR_URL, LICENSE_URL, PRIVACY_URL, REPO_URL } from "../lib/links";
+---
+
+<footer class="border-t border-line">
+  <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-xs text-muted">
+    <p>
+      © 2026 <a href={AUTHOR_URL} class="hover:text-fg">Federico Vezzoli</a> and contributors ·{" "}
+      <a href={LICENSE_URL} class="hover:text-fg">MIT License</a>
+    </p>
+    <nav class="flex gap-5">
+      <a href={REPO_URL} class="hover:text-fg">GitHub</a>
+      <a href={PRIVACY_URL} class="hover:text-fg">Privacy</a>
+    </nav>
+  </div>
+</footer>

@@ -1,0 +1,27 @@
+---
+import { ISSUES_URL, REPO_URL } from "../lib/links";
+---
+
+<section class="border-t border-line">
+  <div class="mx-auto max-w-5xl px-6 py-20">
+    <h2 class="text-xl font-semibold tracking-tight">Open source, MIT-licensed</h2>
+    <p class="mt-4 max-w-2xl text-muted">
+      Every line of code and every design decision is public. Use it, fork it, host it yourself.
+    </p>
+    <ul class="mt-8 space-y-3">
+      <li>
+        <span class="text-muted">→</span> Try it on your machine and{" "}
+        <a href={ISSUES_URL} class="underline underline-offset-4">report</a> anything that cuts wrong
+        or is confusing.
+      </li>
+      <li>
+        <span class="text-muted">→</span> Add your router to the machine presets, with a source for
+        every value.
+      </li>
+      <li>
+        <span class="text-muted">→</span> Read and discuss the product requirements and architecture
+        decisions on{" "}<a href={REPO_URL} class="underline underline-offset-4">GitHub</a>.
+      </li>
+    </ul>
+  </div>
+</section>

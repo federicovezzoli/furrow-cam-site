@@ -1,0 +1,35 @@
+---
+const presets = [
+  { maker: "V1 Engineering", model: "LowRider v4" },
+  { maker: "V1 Engineering", model: "MPCNC Primo" },
+  { maker: "Maslow CNC", model: "Maslow 4" },
+  { maker: "Sienci Labs", model: "LongMill MK2" },
+  { maker: "SainSmart", model: "Genmitsu 3018" },
+];
+---
+
+<section class="border-t border-line">
+  <div class="mx-auto max-w-5xl px-6 py-20">
+    <h2 class="text-xl font-semibold tracking-tight">Ready for your machine</h2>
+    <p class="mt-4 max-w-2xl text-muted">
+      Start from a preset for a popular hobby router, with every value taken from the maker's
+      documentation, or set up any GRBL-compatible router in a minute.
+    </p>
+    <ul class="mt-8 grid gap-px bg-line sm:grid-cols-2 md:grid-cols-3">
+      {
+        presets.map((p) => (
+          <li class="bg-bg p-4">
+            <span class="text-muted">{p.maker}</span>
+            <br />
+            {p.model}
+          </li>
+        ))
+      }
+      <li class="bg-bg p-4">
+        <span class="text-muted">Any controller running</span>
+        <br />
+        GRBL, grblHAL or FluidNC
+      </li>
+    </ul>
+  </div>
+</section>

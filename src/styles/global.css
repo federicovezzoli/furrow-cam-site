@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* Same visual language as the app: one monospaced typeface, greys, square corners. */
+@theme {
+  --font-sans: "JetBrains Mono Variable", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --color-bg: oklch(1 0 0);
+  --color-fg: oklch(0.145 0 0);
+  --color-muted: oklch(0.556 0 0);
+  --color-subtle: oklch(0.97 0 0);
+  --color-line: oklch(0.922 0 0);
+  --color-accent: oklch(0.205 0 0);
+  --color-accent-fg: oklch(0.985 0 0);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: oklch(0.145 0 0);
+    --color-fg: oklch(0.985 0 0);
+    --color-muted: oklch(0.708 0 0);
+    --color-subtle: oklch(0.205 0 0);
+    --color-line: oklch(1 0 0 / 12%);
+    --color-accent: oklch(0.922 0 0);
+    --color-accent-fg: oklch(0.205 0 0);
+  }
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  color-scheme: light dark;
+}
