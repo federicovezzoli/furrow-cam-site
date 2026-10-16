@@ -1,5 +1,6 @@
 ---
 import { RELEASES_URL, REPO_URL, SIGN_UP_URL } from "../lib/links";
+import GitHubIcon from "./GitHubIcon.astro";
 
 // A closed contour and the tool's offset paths around it, like a profile toolpath.
 const offsets = [0, 10, 20, 30];
@@ -14,12 +15,13 @@ const offsets = [0, 10, 20, 30];
       2.5D CAM for CNC routers, in your browser.
     </h1>
     <p class="mt-6 max-w-xl text-base text-muted">
-      Import an SVG or DXF, set up profile, pocket, drill, engrave and V-carve operations, preview
-      every cut, and export G-code for GRBL-compatible machines. No install, free and MIT-licensed.
+      Import an SVG, DXF or STL, set up profile, pocket, drill, engrave, V-carve and 3D relief
+      operations, preview every cut, and export G-code for GRBL-compatible machines. No install, free
+      and MIT-licensed.
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
       <a href={SIGN_UP_URL} class="bg-accent px-4 py-2.5 text-accent-fg hover:opacity-90">Create a free account</a>
-      <a href={REPO_URL} class="border border-line px-4 py-2.5 hover:bg-subtle">View on GitHub</a>
+      <a href={REPO_URL} class="flex items-center gap-2 border border-line px-4 py-2.5 hover:bg-subtle"><GitHubIcon />View on GitHub</a>
     </div>
   </div>
 

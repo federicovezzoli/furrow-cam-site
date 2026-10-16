@@ -2,11 +2,15 @@
 const features = [
   {
     title: "Import your design",
-    body: "Bring SVG and DXF files from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool. You design elsewhere, Furrow turns it into toolpaths.",
+    body: "Bring SVG and DXF drawings or STL models from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool. You design elsewhere, Furrow turns it into toolpaths.",
   },
   {
     title: "The operations you need",
     body: "Profiles inside, outside or on the line with depth passes, ramp entry and holding tabs. Pockets with offset, linear or peel clearing. Drilling, engraving and V-carving.",
+  },
+  {
+    title: "3D reliefs from STL",
+    body: "Rough an STL model level by level, then finish it with parallel passes. Stack several operations on the same model: with rest machining, each one only cuts where material is left.",
   },
   {
     title: "Zero where you zero",
@@ -15,10 +19,6 @@ const features = [
   {
     title: "See every cut first",
     body: "Toolpaths in a 2D and 3D viewport, rapids and cuts shown apart, and a simulation of the stock after cutting.",
-  },
-  {
-    title: "Your workshop, everywhere",
-    body: "Tool library, machine profiles and projects are saved to your account, with undo, named versions and file export.",
   },
   {
     title: "G-code that runs",
@@ -41,7 +41,9 @@ const features = [
       }
     </div>
     <p class="mt-6 text-muted">
-      Toolpaths are computed on your device, and the only personal data we keep is your email address.
+      Your tool library, machine profiles and projects are saved to your account, with undo, named
+      versions and file export. Toolpaths are computed on your device, and the only personal data we
+      keep is your email address.
     </p>
   </div>
 </section>
