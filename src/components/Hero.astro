@@ -1,18 +1,27 @@
 ---
 import { RELEASES_URL, REPO_URL, SIGN_UP_URL } from "../lib/links";
 import GitHubIcon from "./GitHubIcon.astro";
-
-// A closed contour and the tool's offset paths around it, like a profile toolpath.
-const offsets = [0, 10, 20, 30];
 ---
 
-<section class="mx-auto grid max-w-5xl items-center gap-12 px-6 py-20 md:grid-cols-[3fr_2fr] md:py-28">
-  <div>
+<section class="relative overflow-hidden border-b border-line">
+  <video
+    src="/furrow-stl-demo-161026.mp4"
+    class="absolute inset-0 h-full w-full object-cover"
+    autoplay
+    muted
+    loop
+    playsinline
+    aria-hidden="true"
+  ></video>
+  <!-- Solid behind the text, fading out to the right so the demo stays visible. -->
+  <div class="absolute inset-0 bg-bg/80 md:bg-transparent md:bg-linear-to-r md:from-bg/100 md:from-35% md:to-bg/20"></div>
+
+  <div class="relative mx-auto max-w-5xl px-6 py-24 md:py-36">
     <a href={RELEASES_URL} class="inline-block border border-line px-2 py-0.5 text-xs text-muted hover:text-fg">
       Alpha · open source
     </a>
     <h1 class="mt-6 text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-      2.5D CAM for CNC routers, in your browser.
+      2.5D CAM for CNC routers,<br /> in your browser.
     </h1>
     <p class="mt-6 max-w-xl text-base text-muted">
       Import an SVG, DXF or STL, set up profile, pocket, drill, engrave, V-carve and 3D relief
@@ -24,24 +33,4 @@ const offsets = [0, 10, 20, 30];
       <a href={REPO_URL} class="flex items-center gap-2 border border-line px-4 py-2.5 hover:bg-subtle"><GitHubIcon />View on GitHub</a>
     </div>
   </div>
-
-  <svg viewBox="0 0 200 200" class="w-full max-w-xs justify-self-center text-muted" aria-hidden="true">
-    {
-      offsets.map((d, i) => (
-        <rect
-          x={50 - d}
-          y={50 - d}
-          width={100 + 2 * d}
-          height={100 + 2 * d}
-          rx={d}
-          fill="none"
-          stroke="currentColor"
-          stroke-width={i === 0 ? 2 : 1}
-          stroke-dasharray={i === 0 ? undefined : "4 4"}
-          class={i === 0 ? "text-fg" : undefined}
-        />
-      ))
-    }
-    <circle cx="80" cy="20" r="3" fill="currentColor" class="text-fg" />
-  </svg>
 </section>
