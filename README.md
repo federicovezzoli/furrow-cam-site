@@ -2,7 +2,7 @@
 
 The landing page of [Furrow CAM](https://github.com/federicovezzoli/furrow-cam), an open source, web-based 2.5D CAM for CNC routers. The app itself lives at [app.furrow.cam](https://app.furrow.cam) and in its own repository; this repository only holds the marketing site at [furrow.cam](https://furrow.cam).
 
-Built with [Astro](https://astro.build) and Tailwind CSS: static HTML, no JavaScript shipped, no tracking. It uses the app's visual language (JetBrains Mono, greys, square corners) and follows the system's light or dark theme.
+Built with [Astro](https://astro.build) and Tailwind CSS: static HTML and no JavaScript beyond a cookieless [GoatCounter](https://www.goatcounter.com) page-view beacon. It uses the app's visual language (JetBrains Mono, greys, square corners) and follows the system's light or dark theme.
 
 ## Development
 
@@ -22,6 +22,7 @@ src/pages/index.astro     the page, assembled from the sections below
 src/components/           Header, Hero, Features, Machines, OpenSource, Footer
 src/layouts/Layout.astro  <head>: title, description, Open Graph
 src/lib/links.ts          every outbound URL (app, GitHub, privacy policy)
+src/components/Analytics.astro  GoatCounter page-view beacon
 src/styles/global.css     Tailwind theme: font, colours, dark mode
 ```
 
@@ -29,7 +30,7 @@ Facts on the page (features, machine presets, supported controllers) must match 
 
 ## Deployment
 
-Deployed on Vercel as its own project, separate from the app, on `furrow.cam` (DNS on Cloudflare). Vercel detects Astro and builds `dist/` with no configuration or environment variables.
+Deployed on Vercel as its own project, separate from the app, on `furrow.cam` (DNS on Cloudflare). Vercel detects Astro and builds `dist/` with no configuration. Set `PUBLIC_GOATCOUNTER_URL` (e.g. `https://<code>.goatcounter.com/count`, see `.env.example`) to count page views; when it is unset, as in development, nothing is counted.
 
 ## License
 

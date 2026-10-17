@@ -1,0 +1,28 @@
+---
+import { PUBLIC_GOATCOUNTER_URL } from "astro:env/client";
+
+const endpoint = PUBLIC_GOATCOUNTER_URL;
+---
+
+{/*
+  Page-view counting with GoatCounter, as in the app (its ADR-0020). Sends the hit itself instead
+  of loading count.js: no third-party script, no cookies, and only the pathname, an external
+  referrer's origin and the screen size are sent, never the query string or the full referrer.
+*/}
+{
+  endpoint && (
+    <script is:inline define:vars={{ endpoint }}>
+      (() => {
+        const url = new URL(endpoint);
+        url.searchParams.set("p", location.pathname);
+        url.searchParams.set("t", document.title);
+        try {
+          const { origin } = new URL(document.referrer);
+          if (origin !== location.origin) url.searchParams.set("r", origin);
+        } catch {}
+        url.searchParams.set("s", `${screen.width},${screen.height},${devicePixelRatio || 1}`);
+        navigator.sendBeacon(url);
+      })();
+    </script>
+  )
+}
