@@ -1,0 +1,72 @@
+---
+import { DESKTOP_DOWNLOADS, DESKTOP_RELEASES_URL, DESKTOP_VERSION } from "../lib/links";
+
+const fileName = (url: string) => url.slice(url.lastIndexOf("/") + 1);
+
+const systems = [
+  { name: "macOS, Apple Silicon (M1 and later)", files: [{ url: DESKTOP_DOWNLOADS.macArm64 }] },
+  { name: "macOS, Intel", files: [{ url: DESKTOP_DOWNLOADS.macX64 }] },
+  { name: "Windows", files: [{ url: DESKTOP_DOWNLOADS.winX64 }] },
+  {
+    name: "Linux",
+    files: [{ url: DESKTOP_DOWNLOADS.linuxAppImage }, { url: DESKTOP_DOWNLOADS.linuxDeb, note: "Debian, Ubuntu" }],
+  },
+];
+---
+
+<section id="download" class="border-t border-line">
+  <div class="mx-auto max-w-5xl px-6 py-20">
+    <h2 class="text-xl font-semibold tracking-tight">Also on your desktop</h2>
+    <p class="mt-4 max-w-2xl text-muted">
+      The same workspace as the web app, from import to G-code, for macOS, Windows and Linux. No
+      account and no internet connection needed: projects are <code>.furrow</code> files on your
+      computer, with their saved versions, and open in the web app too. Free and MIT-licensed.
+    </p>
+    <ul class="mt-8 grid gap-px border border-line bg-line sm:grid-cols-2">
+      {
+        systems.map((s) => (
+          <li class="bg-bg p-4">
+            {s.name}
+            {s.files.map((f) => (
+              <a href={f.url} class="mt-2 block break-all text-xs text-muted underline underline-offset-4 hover:text-fg">
+                {fileName(f.url)}
+                {f.note && ` (${f.note})`}
+              </a>
+            ))}
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-6 text-muted">
+      Version {DESKTOP_VERSION}. Release notes and older versions are on the{" "}
+      <a href={DESKTOP_RELEASES_URL} class="underline underline-offset-4 hover:text-fg">releases page</a>.
+    </p>
+
+    <h3 class="mt-12 font-semibold">First launch</h3>
+    <p class="mt-4 max-w-2xl text-muted">
+      The installers aren't code-signed yet, so your system warns you the first time you open the
+      app.
+    </p>
+    <ul class="mt-6 max-w-2xl space-y-3">
+      <li>
+        <span class="text-muted">→</span> <strong class="font-semibold">macOS:</strong> open System
+        Settings → Privacy &amp; Security, scroll down to the message about Furrow CAM and click{" "}
+        <strong class="font-semibold">Open Anyway</strong>, then confirm.
+      </li>
+      <li>
+        <span class="text-muted">→</span> <strong class="font-semibold">Windows:</strong> when
+        SmartScreen shows "Windows protected your PC", click{" "}
+        <strong class="font-semibold">More info</strong>, then{" "}
+        <strong class="font-semibold">Run anyway</strong>.
+      </li>
+      <li>
+        <span class="text-muted">→</span> <strong class="font-semibold">Linux:</strong> make the
+        AppImage executable (<code>chmod +x</code>) and run it, or install the <code>.deb</code> with{" "}
+        <code>sudo apt install ./furrow-cam-*.deb</code>.
+      </li>
+    </ul>
+    <p class="mt-6 max-w-2xl text-muted">
+      There's no automatic update yet: download new versions from this page.
+    </p>
+  </div>
+</section>

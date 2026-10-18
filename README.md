@@ -2,7 +2,7 @@
 
 The landing page of [Furrow CAM](https://github.com/federicovezzoli/furrow-cam), an open source, web-based 2.5D CAM for CNC routers. The app itself lives at [app.furrow.cam](https://app.furrow.cam) and in its own repository; this repository only holds the marketing site at [furrow.cam](https://furrow.cam).
 
-Built with [Astro](https://astro.build) and Tailwind CSS: static HTML and no JavaScript beyond a cookieless [GoatCounter](https://www.goatcounter.com) page-view beacon. It uses the app's visual language (JetBrains Mono, greys, square corners) and follows the system's light or dark theme.
+Built with [Astro](https://astro.build) and Tailwind CSS: static HTML and no JavaScript beyond a cookieless [GoatCounter](https://www.goatcounter.com) page-view beacon and a small inline script that points the hero's desktop download at the visitor's system. It uses the app's visual language (JetBrains Mono, greys, square corners) and follows the system's light or dark theme.
 
 ## Development
 
@@ -19,12 +19,14 @@ pnpm preview   # serve the built site
 
 ```
 src/pages/index.astro     the page, assembled from the sections below
-src/components/           Header, Hero, Features, Machines, OpenSource, Footer
+src/components/           Header, Hero, Features, Machines, Download, OpenSource, Footer
 src/layouts/Layout.astro  <head>: title, description, Open Graph
-src/lib/links.ts          every outbound URL (app, GitHub, privacy policy)
+src/lib/links.ts          every outbound URL (app, GitHub, desktop releases, privacy policy)
 src/components/Analytics.astro  GoatCounter page-view beacon
 src/styles/global.css     Tailwind theme: font, colours, dark mode
 ```
+
+When a new `@furrow/desktop` version is released, bump `DESKTOP_VERSION` in `src/lib/links.ts`: the download links are built from it.
 
 Facts on the page (features, machine presets, supported controllers) must match what the app actually ships; check the app's README and releases when updating them.
 
