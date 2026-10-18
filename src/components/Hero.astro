@@ -1,5 +1,5 @@
 ---
-import { RELEASES_URL, REPO_URL, SIGN_UP_URL } from "../lib/links";
+import { DESKTOP_DOWNLOADS, DESKTOP_VERSION, RELEASES_URL, REPO_URL, SIGN_UP_URL } from "../lib/links";
 import GitHubIcon from "./GitHubIcon.astro";
 ---
 
@@ -30,7 +30,37 @@ import GitHubIcon from "./GitHubIcon.astro";
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
       <a href={SIGN_UP_URL} class="bg-accent px-4 py-2.5 text-accent-fg hover:opacity-90">Create a free account</a>
+      <a id="desktop-download" href="#download" class="border border-line bg-bg px-4 py-2.5 hover:bg-subtle">Download for desktop</a>
       <a href={REPO_URL} class="flex items-center gap-2 border border-line px-4 py-2.5 hover:bg-subtle"><GitHubIcon />View on GitHub</a>
     </div>
+    <p class="mt-4 text-xs text-muted">
+      Desktop app {DESKTOP_VERSION} for macOS, Windows and Linux ·{" "}
+      <a href="#download" class="underline underline-offset-4 hover:text-fg">all downloads</a>
+    </p>
   </div>
 </section>
+
+<!-- Points the desktop button at the installer for the visitor's system. Without JavaScript, or on
+     a phone, it keeps leading to the download section. -->
+<script is:inline define:vars={{ downloads: DESKTOP_DOWNLOADS }}>
+  (async () => {
+    const button = document.getElementById("desktop-download");
+    const ua = navigator.userAgent;
+    const uaData = navigator.userAgentData;
+    const platform = uaData?.platform || ua;
+    // iPadOS reports itself as a Mac; touch support gives it away.
+    if (/Android|iPhone|iPad/.test(ua) || (/Mac/.test(ua) && navigator.maxTouchPoints > 1)) return;
+
+    let pick;
+    if (/win/i.test(platform)) pick = ["Windows", downloads.winX64];
+    else if (/mac/i.test(platform)) {
+      // Only Chromium tells the architecture; elsewhere assume Apple Silicon, named in the label.
+      const arch = await uaData?.getHighEntropyValues(["architecture"]).then((v) => v.architecture, () => undefined);
+      pick = arch === "x86" ? ["macOS (Intel)", downloads.macX64] : ["macOS (Apple Silicon)", downloads.macArm64];
+    } else if (/linux/i.test(platform)) pick = ["Linux", downloads.linuxAppImage];
+    if (!pick) return;
+
+    button.href = pick[1];
+    button.textContent = `Download for ${pick[0]}`;
+  })();
+</script>
