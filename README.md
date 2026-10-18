@@ -21,12 +21,12 @@ pnpm preview   # serve the built site
 src/pages/index.astro     the page, assembled from the sections below
 src/components/           Header, Hero, Features, Machines, Download, OpenSource, Footer
 src/layouts/Layout.astro  <head>: title, description, Open Graph
-src/lib/links.ts          every outbound URL (app, GitHub, desktop releases, privacy policy)
+src/lib/links.ts          every outbound URL (app, GitHub, desktop downloads and releases, privacy policy)
 src/components/Analytics.astro  GoatCounter page-view beacon
 src/styles/global.css     Tailwind theme: font, colours, dark mode
 ```
 
-When a new `@furrow/desktop` version is released, bump `DESKTOP_VERSION` in `src/lib/links.ts`: the download links are built from it.
+The desktop download links point at `download.furrow.cam/<platform>`, which redirects to the newest `@furrow/desktop` installer: a new desktop release needs no change here.
 
 Facts on the page (features, machine presets, supported controllers) must match what the app actually ships; check the app's README and releases when updating them.
 

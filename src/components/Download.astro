@@ -1,15 +1,16 @@
 ---
-import { DESKTOP_DOWNLOADS, DESKTOP_RELEASES_URL, DESKTOP_VERSION } from "../lib/links";
-
-const fileName = (url: string) => url.slice(url.lastIndexOf("/") + 1);
+import { DESKTOP_DOWNLOADS, DESKTOP_RELEASES_URL } from "../lib/links";
 
 const systems = [
-  { name: "macOS, Apple Silicon (M1 and later)", files: [{ url: DESKTOP_DOWNLOADS.macArm64 }] },
-  { name: "macOS, Intel", files: [{ url: DESKTOP_DOWNLOADS.macX64 }] },
-  { name: "Windows", files: [{ url: DESKTOP_DOWNLOADS.winX64 }] },
+  { name: "macOS, Apple Silicon (M1 and later)", files: [{ url: DESKTOP_DOWNLOADS.macArm64, type: ".dmg" }] },
+  { name: "macOS, Intel", files: [{ url: DESKTOP_DOWNLOADS.macX64, type: ".dmg" }] },
+  { name: "Windows", files: [{ url: DESKTOP_DOWNLOADS.winX64, type: ".exe" }] },
   {
     name: "Linux",
-    files: [{ url: DESKTOP_DOWNLOADS.linuxAppImage }, { url: DESKTOP_DOWNLOADS.linuxDeb, note: "Debian, Ubuntu" }],
+    files: [
+      { url: DESKTOP_DOWNLOADS.linuxAppImage, type: ".AppImage" },
+      { url: DESKTOP_DOWNLOADS.linuxDeb, type: ".deb", note: "Debian, Ubuntu" },
+    ],
   },
 ];
 ---
@@ -29,7 +30,7 @@ const systems = [
             {s.name}
             {s.files.map((f) => (
               <a href={f.url} class="mt-2 block break-all text-xs text-muted underline underline-offset-4 hover:text-fg">
-                {fileName(f.url)}
+                {f.type}
                 {f.note && ` (${f.note})`}
               </a>
             ))}
@@ -38,7 +39,7 @@ const systems = [
       }
     </ul>
     <p class="mt-6 text-muted">
-      Version {DESKTOP_VERSION}. Release notes and older versions are on the{" "}
+      Release notes and older versions are on the{" "}
       <a href={DESKTOP_RELEASES_URL} class="underline underline-offset-4 hover:text-fg">releases page</a>.
     </p>
 
