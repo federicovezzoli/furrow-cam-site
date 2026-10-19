@@ -1,4 +1,6 @@
 export const APP_URL = "https://app.furrow.cam";
+// Opens a new project straight in the workspace, without an account (furrow-cam PRD-0008 G11).
+export const NEW_PROJECT_URL = `${APP_URL}/new`;
 export const PRIVACY_URL = `${APP_URL}/privacy`;
 export const REPO_URL = "https://github.com/federicovezzoli/furrow-cam";
 export const ISSUES_URL = `${REPO_URL}/issues`;

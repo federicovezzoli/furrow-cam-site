@@ -1,5 +1,5 @@
 ---
-import { APP_URL, DESKTOP_DOWNLOADS, RELEASES_URL, REPO_URL } from "../lib/links";
+import { DESKTOP_DOWNLOADS, NEW_PROJECT_URL, RELEASES_URL, REPO_URL } from "../lib/links";
 import GitHubIcon from "./GitHubIcon.astro";
 ---
 
@@ -29,7 +29,7 @@ import GitHubIcon from "./GitHubIcon.astro";
       sign-up to try it, free and MIT-licensed.
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
-      <a href={APP_URL} class="bg-accent px-4 py-2.5 text-accent-fg hover:opacity-90">Open the app</a>
+      <a href={NEW_PROJECT_URL} class="bg-accent px-4 py-2.5 text-accent-fg hover:opacity-90">Start a project</a>
       <a id="desktop-download" href="#download" class="border border-line bg-bg px-4 py-2.5 hover:bg-subtle">Download for desktop</a>
       <a href={REPO_URL} class="flex items-center gap-2 border border-line px-4 py-2.5 hover:bg-subtle"><GitHubIcon />View on GitHub</a>
     </div>
