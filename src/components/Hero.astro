@@ -1,5 +1,5 @@
 ---
-import { DESKTOP_DOWNLOADS, RELEASES_URL, REPO_URL, SIGN_UP_URL } from "../lib/links";
+import { APP_URL, DESKTOP_DOWNLOADS, RELEASES_URL, REPO_URL } from "../lib/links";
 import GitHubIcon from "./GitHubIcon.astro";
 ---
 
@@ -25,11 +25,11 @@ import GitHubIcon from "./GitHubIcon.astro";
     </h1>
     <p class="mt-6 max-w-xl text-base text-muted">
       Import an SVG, DXF or STL, set up profile, pocket, drill, engrave, V-carve and 3D relief
-      operations, preview every cut, and export G-code for GRBL-compatible machines. No install, free
-      and MIT-licensed.
+      operations, preview every cut, and export G-code for GRBL-compatible machines. No install and no
+      sign-up to try it, free and MIT-licensed.
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
-      <a href={SIGN_UP_URL} class="bg-accent px-4 py-2.5 text-accent-fg hover:opacity-90">Create a free account</a>
+      <a href={APP_URL} class="bg-accent px-4 py-2.5 text-accent-fg hover:opacity-90">Open the app</a>
       <a id="desktop-download" href="#download" class="border border-line bg-bg px-4 py-2.5 hover:bg-subtle">Download for desktop</a>
       <a href={REPO_URL} class="flex items-center gap-2 border border-line px-4 py-2.5 hover:bg-subtle"><GitHubIcon />View on GitHub</a>
     </div>
