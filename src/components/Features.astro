@@ -27,24 +27,42 @@ const features = [
 ];
 ---
 
-<section class="border-t border-line">
-  <div class="mx-auto max-w-5xl px-6 py-20">
-    <h2 class="text-xl font-semibold tracking-tight">From drawing to G-code</h2>
-    <div class="mt-10 grid gap-px border border-line bg-line md:grid-cols-3">
+<section class="px-4 py-24 md:py-40">
+  <div class="mx-auto max-w-7xl">
+    <p data-scramble class="label text-faint">01 / Workflow</p>
+    <h2 data-split class="mt-6 max-w-[12ch] font-display text-h2 font-medium">From drawing to G-code</h2>
+
+    <ol class="mt-16 md:mt-24">
       {
-        features.map((f) => (
-          <div class="bg-bg p-6">
-            <h3 class="font-semibold">{f.title}</h3>
-            <p class="mt-2 text-muted">{f.body}</p>
-          </div>
+        features.map((f, i) => (
+          <li class="group relative">
+            <div data-line class="h-px bg-line" />
+            <div data-fade class="grid gap-3 py-8 md:grid-cols-12 md:gap-8 md:py-10">
+              <span class="label flex items-center gap-2.5 pt-2 text-faint md:col-span-2">
+                <span class="size-1.5 bg-line transition-colors duration-300 group-hover:bg-signal" aria-hidden="true" />
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 class="font-display text-2xl font-medium tracking-[-0.03em] md:col-span-4 md:text-3xl">{f.title}</h3>
+              <p class="max-w-xl text-muted md:col-span-6">{f.body}</p>
+            </div>
+          </li>
         ))
       }
-    </div>
-    <p class="mt-6 text-muted">
-      Try it straight away: your projects stay in your browser until you create a free account,
-      which saves your bits, machine profiles and projects, with undo, named versions and file
-      export. Toolpaths are computed on your device, and the only personal data we
-      keep is your email address.
+    </ol>
+    <div data-line class="h-px bg-line"></div>
+  </div>
+</section>
+
+<section class="border-y border-line bg-raised px-4 py-28 md:py-44">
+  <div class="mx-auto max-w-6xl">
+    <p data-scramble class="label text-faint">02 / Private by design</p>
+    <p data-scrub-words class="mt-8 font-display text-statement font-medium text-pretty">
+      Try it straight away: your projects stay in your browser until you create a free account.
+      Toolpaths are computed on your device, and the only personal data we keep is your email address.
+    </p>
+    <p data-fade class="mt-10 max-w-xl text-muted">
+      A free account saves your bits, machine profiles and projects, with undo, named versions and file
+      export.
     </p>
   </div>
 </section>

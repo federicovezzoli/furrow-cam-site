@@ -5,31 +5,34 @@ const presets = [
   { maker: "Maslow CNC", model: "Maslow 4" },
   { maker: "Sienci Labs", model: "LongMill MK2" },
   { maker: "SainSmart", model: "Genmitsu 3018" },
+  { maker: "Any controller running", model: "GRBL, grblHAL or FluidNC" },
 ];
 ---
 
-<section class="border-t border-line">
-  <div class="mx-auto max-w-5xl px-6 py-20">
-    <h2 class="text-xl font-semibold tracking-tight">Ready for your machine</h2>
-    <p class="mt-4 max-w-2xl text-muted">
-      Start from a preset for a popular hobby router, with every value taken from the maker's
-      documentation, or set up any GRBL-compatible router in a minute.
-    </p>
-    <ul class="mt-8 grid gap-px border border-line bg-line sm:grid-cols-2 md:grid-cols-3">
+<section class="px-4 py-24 md:py-40">
+  <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-12 md:gap-8">
+    <div class="md:col-span-5">
+      <div class="md:sticky md:top-32">
+        <p data-scramble class="label text-faint">03 / Machines</p>
+        <h2 data-split class="mt-6 max-w-[10ch] font-display text-h2 font-medium">Ready for your machine</h2>
+        <p data-fade class="mt-8 max-w-sm text-muted">
+          Start from a preset for a popular hobby router, with every value taken from the maker's
+          documentation, or set up any GRBL-compatible router in a minute.
+        </p>
+      </div>
+    </div>
+
+    <ul data-stagger class="border-t border-line md:col-span-7">
       {
         presets.map((p) => (
-          <li class="bg-bg p-4">
-            <span class="text-muted">{p.maker}</span>
-            <br />
-            {p.model}
+          <li class="group flex flex-col gap-1.5 border-b border-line py-6 md:flex-row md:items-baseline md:justify-between md:gap-6">
+            <span class="font-display text-2xl font-medium tracking-[-0.03em] transition-transform duration-500 ease-out-expo group-hover:translate-x-2 md:text-4xl">
+              {p.model}
+            </span>
+            <span class="label shrink-0 text-faint transition-colors group-hover:text-signal">{p.maker}</span>
           </li>
         ))
       }
-      <li class="bg-bg p-4">
-        <span class="text-muted">Any controller running</span>
-        <br />
-        GRBL, grblHAL or FluidNC
-      </li>
     </ul>
   </div>
 </section>

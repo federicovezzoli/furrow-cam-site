@@ -1,27 +1,46 @@
 ---
-import { ISSUES_URL, REPO_URL } from "../lib/links";
+import { ISSUES_URL, NEW_PROJECT_URL, REPO_URL } from "../lib/links";
+import GitHubIcon from "./GitHubIcon.astro";
 ---
 
-<section class="border-t border-line">
-  <div class="mx-auto max-w-5xl px-6 py-20">
-    <h2 class="text-xl font-semibold tracking-tight">Open source, MIT-licensed</h2>
-    <p class="mt-4 max-w-2xl text-muted">
+<section class="border-t border-line bg-raised px-4 py-28 md:py-44">
+  <div class="mx-auto flex max-w-7xl flex-col items-center text-center">
+    <p data-scramble class="label text-faint">05 / Open source</p>
+    <h2 data-split class="mt-6 max-w-[12ch] font-display text-h2 font-medium text-balance">Open source, MIT-licensed</h2>
+    <p data-fade class="mt-8 max-w-md text-muted">
       Every line of code and every design decision is public. Use it, fork it, host it yourself.
     </p>
-    <ul class="mt-8 space-y-3">
-      <li>
-        <span class="text-muted">→</span> Try it on your machine and{" "}
-        <a href={ISSUES_URL} class="underline underline-offset-4">report</a> anything that cuts wrong
-        or is confusing.
+
+    <ol data-stagger class="mt-16 grid w-full gap-px border border-line bg-line text-left md:grid-cols-3">
+      <li class="bg-raised p-6">
+        <span class="label text-signal">A</span>
+        <p class="mt-6">
+          Try it on your machine and <a href={ISSUES_URL} class="underline underline-offset-4 hover:text-signal">report</a>
+          anything that cuts wrong or is confusing.
+        </p>
       </li>
-      <li>
-        <span class="text-muted">→</span> Add your router to the machine presets, with a source for
-        every value.
+      <li class="bg-raised p-6">
+        <span class="label text-signal">B</span>
+        <p class="mt-6">Add your router to the machine presets, with a source for every value.</p>
       </li>
-      <li>
-        <span class="text-muted">→</span> Read and discuss the product requirements and architecture
-        decisions on{" "}<a href={REPO_URL} class="underline underline-offset-4">GitHub</a>.
+      <li class="bg-raised p-6">
+        <span class="label text-signal">C</span>
+        <p class="mt-6">
+          Read and discuss the product requirements and architecture decisions on
+          <a href={REPO_URL} class="underline underline-offset-4 hover:text-signal">GitHub</a>.
+        </p>
       </li>
-    </ul>
+    </ol>
+
+    <div data-fade class="mt-12 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+      <a
+        href={NEW_PROJECT_URL}
+        class="flex items-center justify-between gap-6 bg-accent px-5 py-3.5 font-medium text-accent-fg transition-[gap] duration-300 ease-out-expo hover:gap-10"
+        >Start a project <span aria-hidden="true">→</span></a
+      >
+      <a href={REPO_URL} class="flex items-center justify-center gap-2 border border-line px-5 py-3.5 transition-colors hover:border-fg"
+        ><GitHubIcon />View on GitHub</a
+      >
+    </div>
   </div>
 </section>

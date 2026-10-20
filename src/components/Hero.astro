@@ -3,41 +3,54 @@ import { DESKTOP_DOWNLOADS, NEW_PROJECT_URL, RELEASES_URL, REPO_URL } from "../l
 import GitHubIcon from "./GitHubIcon.astro";
 ---
 
-<section class="relative overflow-hidden border-b border-line">
-  <video
-    src="/furrow-stl-demo-161026.mp4"
-    class="absolute inset-0 h-full w-full object-cover"
-    autoplay
-    muted
-    loop
-    playsinline
-    aria-hidden="true"
-  ></video>
-  <!-- Solid behind the text, fading out to the right so the demo stays visible. -->
-  <div class="absolute inset-0 bg-bg/80 md:bg-transparent md:bg-linear-to-r md:from-bg/100 md:from-35% md:to-bg/20"></div>
-
-  <div class="relative mx-auto max-w-5xl px-6 py-24 md:py-36">
-    <a href={RELEASES_URL} class="inline-block border border-line px-2 py-0.5 text-xs text-muted hover:text-fg">
-      Alpha · open source
+<section class="relative px-4 pt-20 pb-20 md:pt-32 md:pb-28">
+  <div class="mx-auto flex max-w-6xl flex-col items-center text-center">
+    <a data-hero href={RELEASES_URL} class="chip label text-muted">
+      <span class="size-1.5 bg-signal" aria-hidden="true"></span>Alpha · open source
     </a>
-    <h1 class="mt-6 text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-      2.5D CAM for CNC routers,<br /> in your browser.
+
+    <h1 data-split-hero class="mt-8 font-display text-display font-medium md:mt-10">
+      {"2.5D CAM "}<br />{"for CNC routers, "}<br />in your browser
     </h1>
-    <p class="mt-6 max-w-xl text-base text-muted">
+
+    <p data-hero class="mt-8 max-w-xl text-pretty text-muted md:mt-10">
       Import an SVG, DXF or STL, set up profile, pocket, drill, engrave, V-carve and 3D relief
       operations, preview every cut, and export G-code for GRBL-compatible machines. No install and no
       sign-up to try it, free and MIT-licensed.
     </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href={NEW_PROJECT_URL} class="bg-accent px-4 py-2.5 text-accent-fg hover:opacity-90">Start a project</a>
-      <a id="desktop-download" href="#download" class="border border-line bg-bg px-4 py-2.5 hover:bg-subtle">Download for desktop</a>
-      <a href={REPO_URL} class="flex items-center gap-2 border border-line px-4 py-2.5 hover:bg-subtle"><GitHubIcon />View on GitHub</a>
+
+    <div data-hero class="mt-10 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+      <a
+        href={NEW_PROJECT_URL}
+        class="flex items-center justify-between gap-6 bg-accent px-5 py-3.5 font-medium text-accent-fg transition-[gap] duration-300 ease-out-expo hover:gap-10"
+        >Start a project <span aria-hidden="true">→</span></a
+      >
+      <a id="desktop-download" href="#download" class="border border-line px-5 py-3.5 transition-colors hover:border-fg">Download for desktop</a>
     </div>
-    <p class="mt-4 text-xs text-muted">
-      Desktop app for macOS, Windows and Linux ·{" "}
-      <a href="#download" class="underline underline-offset-4 hover:text-fg">all downloads</a>
+    <p data-hero class="label mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-faint">
+      <span>macOS · Windows · Linux</span>
+      <a href="#download" class="underline underline-offset-4 hover:text-fg">All downloads</a>
+      <a href={REPO_URL} class="flex items-center gap-1.5 hover:text-fg"><GitHubIcon class="size-3.5" />GitHub</a>
     </p>
   </div>
+
+  <figure data-hero class="mx-auto mt-16 max-w-6xl md:mt-24">
+    <div data-grow class="border border-line bg-raised">
+      <figcaption class="label flex items-center justify-between border-b border-line px-3 py-2.5 text-faint">
+        <span>Viewport · 3D relief from STL</span>
+        <span class="flex items-center gap-2 text-signal"><span class="size-1.5 animate-pulse bg-signal" aria-hidden="true"></span>Simulating</span>
+      </figcaption>
+      <video
+        src="/furrow-stl-demo-161026.mp4"
+        class="block aspect-video w-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-hidden="true"
+      ></video>
+    </div>
+  </figure>
 </section>
 
 <!-- Points the desktop button at the installer for the visitor's system. Without JavaScript, or on
