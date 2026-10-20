@@ -1,27 +1,42 @@
 ---
 import { ISSUES_URL, REPO_URL } from "../lib/links";
+import GitHubIcon from "./GitHubIcon.astro";
 ---
 
-<section class="border-t border-line">
-  <div class="mx-auto max-w-5xl px-6 py-20">
-    <h2 class="text-xl font-semibold tracking-tight">Open source, MIT-licensed</h2>
-    <p class="mt-4 max-w-2xl text-muted">
-      Every line of code and every design decision is public. Use it, fork it, host it yourself.
-    </p>
-    <ul class="mt-8 space-y-3">
-      <li>
-        <span class="text-muted">→</span> Try it on your machine and{" "}
-        <a href={ISSUES_URL} class="underline underline-offset-4">report</a> anything that cuts wrong
-        or is confusing.
+<section>
+  <div class="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-40">
+    <p class="reveal text-xs tracking-widest text-cut uppercase">OP 04 — Open source, MIT-licensed</p>
+    <h2 class="reveal mt-6 max-w-5xl text-statement font-semibold">
+      Every line of code and every design decision is public.
+      <span class="text-muted">Use it, fork it, host it yourself.</span>
+    </h2>
+
+    <ul class="reveal mt-16 grid gap-px border border-line bg-line md:grid-cols-3">
+      <li class="bg-bg p-6">
+        <span class="text-cut" aria-hidden="true">→</span>
+        <p class="mt-6">
+          Try it on your machine and{" "}
+          <a href={ISSUES_URL} class="underline underline-offset-4 hover:text-cut">report</a> anything that cuts wrong
+          or is confusing.
+        </p>
       </li>
-      <li>
-        <span class="text-muted">→</span> Add your router to the machine presets, with a source for
-        every value.
+      <li class="bg-bg p-6">
+        <span class="text-cut" aria-hidden="true">→</span>
+        <p class="mt-6">Add your router to the machine presets, with a source for every value.</p>
       </li>
-      <li>
-        <span class="text-muted">→</span> Read and discuss the product requirements and architecture
-        decisions on{" "}<a href={REPO_URL} class="underline underline-offset-4">GitHub</a>.
+      <li class="bg-bg p-6">
+        <span class="text-cut" aria-hidden="true">→</span>
+        <p class="mt-6">
+          Read and discuss the product requirements and architecture decisions on{" "}
+          <a href={REPO_URL} class="underline underline-offset-4 hover:text-cut">GitHub</a>.
+        </p>
       </li>
     </ul>
+
+    <a
+      href={REPO_URL}
+      class="mt-10 inline-flex items-center gap-3 border border-fg/25 px-5 py-3.5 transition-colors hover:border-fg"
+      ><GitHubIcon />Star it on GitHub</a
+    >
   </div>
 </section>

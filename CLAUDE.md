@@ -1,0 +1,8 @@
+- Design Standard — Use the `/awwwards` skill: For ANY frontend/UI work, invoke the `/awwwards` skill which contains the complete creative direction framework, design decision process, and links to 7 reference files covering typography, color, layout, motion, CSS techniques, WebGL, and studio philosophies. Key principles:
+  - ALWAYS define art direction BEFORE writing code (emotion, archetype, industry context)
+  - Typography is 90% of design — use fluid `clamp()` scales, max 2 font families, tight tracking on display
+  - Never pure black/white — use oklch() or carefully chosen near-black/near-white values
+  - Motion must tell a story — every animation answers "what happened?" or "where should I look?"
+  - Vary section rhythm — alternate contained/full-bleed, vary spacing, break the template look
+  - Performance IS design — target <3s load, 60fps, animate only `transform` and `opacity`
+  - A generic, template-looking UI is a failure. The user must feel the product is one-of-a-kind on first load.

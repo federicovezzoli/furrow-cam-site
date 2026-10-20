@@ -24,10 +24,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f8f6f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#141210" media="(prefers-color-scheme: dark)" />
   </head>
-  <body class="min-h-screen font-sans text-sm leading-relaxed antialiased">
+  <body class="min-h-screen font-sans text-[0.9375rem] leading-relaxed antialiased">
     <slot />
     <Analytics />
   </body>

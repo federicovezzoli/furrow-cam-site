@@ -2,11 +2,12 @@
 import { DESKTOP_DOWNLOADS, DESKTOP_RELEASES_URL } from "../lib/links";
 
 const systems = [
-  { name: "macOS, Apple Silicon (M1 and later)", files: [{ url: DESKTOP_DOWNLOADS.macArm64, type: ".dmg" }] },
-  { name: "macOS, Intel", files: [{ url: DESKTOP_DOWNLOADS.macX64, type: ".dmg" }] },
-  { name: "Windows", files: [{ url: DESKTOP_DOWNLOADS.winX64, type: ".exe" }] },
+  { name: "macOS", detail: "Apple Silicon (M1 and later)", files: [{ url: DESKTOP_DOWNLOADS.macArm64, type: ".dmg" }] },
+  { name: "macOS", detail: "Intel", files: [{ url: DESKTOP_DOWNLOADS.macX64, type: ".dmg" }] },
+  { name: "Windows", detail: "", files: [{ url: DESKTOP_DOWNLOADS.winX64, type: ".exe" }] },
   {
     name: "Linux",
+    detail: "",
     files: [
       { url: DESKTOP_DOWNLOADS.linuxAppImage, type: ".AppImage" },
       { url: DESKTOP_DOWNLOADS.linuxDeb, type: ".deb", note: "Debian, Ubuntu" },
@@ -15,59 +16,81 @@ const systems = [
 ];
 ---
 
-<section id="download" class="border-t border-line">
-  <div class="mx-auto max-w-5xl px-6 py-20">
-    <h2 class="text-xl font-semibold tracking-tight">Also on your desktop</h2>
-    <p class="mt-4 max-w-2xl text-muted">
-      The same workspace as the web app, from import to G-code, for macOS, Windows and Linux. No
-      account and no internet connection needed: projects are <code>.furrow</code> files on your
-      computer, with their saved versions, and open in the web app too. Free and MIT-licensed.
-    </p>
-    <ul class="mt-8 grid gap-px border border-line bg-line sm:grid-cols-2">
+<section id="download" class="inverse scroll-mt-14">
+  <div class="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-36">
+    <div class="reveal grid gap-8 md:grid-cols-12">
+      <div class="md:col-span-6">
+        <p class="text-xs tracking-widest text-cut uppercase">OP 03 — Desktop</p>
+        <h2 class="mt-4 text-h2 font-semibold">Also on your desktop</h2>
+      </div>
+      <p class="text-muted md:col-span-6 md:pt-8">
+        The same workspace as the web app, from import to G-code, for macOS, Windows and Linux. No
+        account and no internet connection needed: projects are <code class="text-fg">.furrow</code> files on your
+        computer, with their saved versions, and open in the web app too. Free and MIT-licensed.
+      </p>
+    </div>
+
+    <ul class="reveal mt-14 border-b border-line">
       {
         systems.map((s) => (
-          <li class="bg-bg p-4">
-            {s.name}
-            {s.files.map((f) => (
-              <a href={f.url} class="mt-2 block break-all text-xs text-muted underline underline-offset-4 hover:text-fg">
-                {f.type}
-                {f.note && ` (${f.note})`}
-              </a>
-            ))}
+          <li class="flex flex-col gap-3 border-t border-line py-5 sm:flex-row sm:items-center sm:justify-between">
+            <span class="flex items-baseline gap-3">
+              <span class="text-xl font-semibold tracking-tight md:text-2xl">{s.name}</span>
+              <span class="text-sm text-muted">{s.detail}</span>
+            </span>
+            <span class="flex flex-wrap gap-2">
+              {s.files.map((f) => (
+                <a
+                  href={f.url}
+                  class="group flex items-center gap-3 border border-line px-4 py-2 text-sm transition-colors hover:border-cut hover:bg-cut hover:text-cut-fg"
+                >
+                  {f.type}
+                  {f.note && <span class="text-xs opacity-70">{f.note}</span>}
+                  <span aria-hidden="true">↓</span>
+                </a>
+              ))}
+            </span>
           </li>
         ))
       }
     </ul>
-    <p class="mt-6 text-muted">
+    <p class="mt-6 text-sm text-muted">
       Release notes and older versions are on the{" "}
       <a href={DESKTOP_RELEASES_URL} class="underline underline-offset-4 hover:text-fg">releases page</a>.
     </p>
 
-    <h3 class="mt-12 font-semibold">First launch</h3>
-    <p class="mt-4 max-w-2xl text-muted">
-      The installers aren't code-signed yet, so your system warns you the first time you open the
-      app.
-    </p>
-    <ul class="mt-6 max-w-2xl space-y-3">
-      <li>
-        <span class="text-muted">→</span> <strong class="font-semibold">macOS:</strong> open System
-        Settings → Privacy &amp; Security, scroll down to the message about Furrow CAM and click{" "}
-        <strong class="font-semibold">Open Anyway</strong>, then confirm.
-      </li>
-      <li>
-        <span class="text-muted">→</span> <strong class="font-semibold">Windows:</strong> when
-        SmartScreen shows "Windows protected your PC", click{" "}
-        <strong class="font-semibold">More info</strong>, then{" "}
-        <strong class="font-semibold">Run anyway</strong>.
-      </li>
-      <li>
-        <span class="text-muted">→</span> <strong class="font-semibold">Linux:</strong> make the
-        AppImage executable (<code>chmod +x</code>) and run it, or install the <code>.deb</code> with{" "}
-        <code>sudo apt install ./furrow-cam-*.deb</code>.
-      </li>
-    </ul>
-    <p class="mt-6 max-w-2xl text-muted">
-      There's no automatic update yet: download new versions from this page.
-    </p>
+    <div class="reveal mt-20 grid gap-10 md:grid-cols-12 md:gap-8">
+      <div class="md:col-span-4">
+        <h3 class="text-lg font-semibold tracking-tight">First launch</h3>
+        <p class="mt-3 text-sm text-muted">
+          The installers aren't code-signed yet, so your system warns you the first time you open the
+          app. There's no automatic update yet: download new versions from this page.
+        </p>
+      </div>
+      <ol class="grid gap-px border border-line bg-line text-sm md:col-span-8 md:grid-cols-3">
+        <li class="bg-bg p-5">
+          <strong class="font-semibold">macOS</strong>
+          <p class="mt-3 text-muted">
+            Open System Settings → Privacy &amp; Security, scroll down to the message about Furrow CAM and click{" "}
+            <strong class="font-semibold text-fg">Open Anyway</strong>, then confirm.
+          </p>
+        </li>
+        <li class="bg-bg p-5">
+          <strong class="font-semibold">Windows</strong>
+          <p class="mt-3 text-muted">
+            When SmartScreen shows "Windows protected your PC", click{" "}
+            <strong class="font-semibold text-fg">More info</strong>, then{" "}
+            <strong class="font-semibold text-fg">Run anyway</strong>.
+          </p>
+        </li>
+        <li class="bg-bg p-5">
+          <strong class="font-semibold">Linux</strong>
+          <p class="mt-3 text-muted">
+            Make the AppImage executable (<code class="text-fg">chmod +x</code>) and run it, or install the{" "}
+            <code class="text-fg">.deb</code> with <code class="break-all text-fg">sudo apt install ./furrow-cam-*.deb</code>.
+          </p>
+        </li>
+      </ol>
+    </div>
   </div>
 </section>

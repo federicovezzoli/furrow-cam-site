@@ -8,27 +8,34 @@ const presets = [
 ];
 ---
 
-<section class="border-t border-line">
-  <div class="mx-auto max-w-5xl px-6 py-20">
-    <h2 class="text-xl font-semibold tracking-tight">Ready for your machine</h2>
-    <p class="mt-4 max-w-2xl text-muted">
-      Start from a preset for a popular hobby router, with every value taken from the maker's
-      documentation, or set up any GRBL-compatible router in a minute.
-    </p>
-    <ul class="mt-8 grid gap-px border border-line bg-line sm:grid-cols-2 md:grid-cols-3">
+<section class="border-y border-line bg-subtle">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
+    <div class="reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs tracking-widest text-cut uppercase">OP 02 — Machines</p>
+        <h2 class="mt-4 text-h2 font-semibold">Ready for your machine</h2>
+      </div>
+      <p class="max-w-md text-muted">
+        Start from a preset for a popular hobby router, with every value taken from the maker's
+        documentation, or set up any GRBL-compatible router in a minute.
+      </p>
+    </div>
+
+    <ul class="reveal mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
       {
-        presets.map((p) => (
-          <li class="bg-bg p-4">
-            <span class="text-muted">{p.maker}</span>
-            <br />
-            {p.model}
+        presets.map((p, i) => (
+          <li class="group flex min-h-36 flex-col justify-between gap-6 bg-bg p-6 transition-colors hover:bg-subtle">
+            <span class="flex justify-between text-xs text-muted">
+              {p.maker}
+              <span class="tabular-nums">T{i + 1}</span>
+            </span>
+            <span class="text-2xl font-semibold tracking-tight">{p.model}</span>
           </li>
         ))
       }
-      <li class="bg-bg p-4">
-        <span class="text-muted">Any controller running</span>
-        <br />
-        GRBL, grblHAL or FluidNC
+      <li class="flex min-h-36 flex-col justify-between gap-6 bg-cut p-6 text-cut-fg">
+        <span class="text-xs">Any controller running</span>
+        <span class="text-2xl font-semibold tracking-tight">GRBL, grblHAL or FluidNC</span>
       </li>
     </ul>
   </div>

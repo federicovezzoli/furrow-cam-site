@@ -1,29 +1,66 @@
 @import "tailwindcss";
 @import "@fontsource-variable/jetbrains-mono";
 
-/* Same visual language as the app: one monospaced typeface, greys, square corners. */
+/* The app's visual language (one monospaced typeface, square corners), set like a technical
+   drawing: warm paper greys and a single "cut" orange, used only where the tool meets material. */
 @theme {
   --font-sans: "JetBrains Mono Variable", ui-monospace, monospace;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 
-  --color-bg: oklch(1 0 0);
-  --color-fg: oklch(0.145 0 0);
-  --color-muted: oklch(0.556 0 0);
-  --color-subtle: oklch(0.97 0 0);
-  --color-line: oklch(0.922 0 0);
-  --color-accent: oklch(0.205 0 0);
-  --color-accent-fg: oklch(0.985 0 0);
+  --text-display: clamp(2.6rem, 7.4vw, 7rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.055em;
+  --text-h2: clamp(1.75rem, 3.6vw, 3.25rem);
+  --text-h2--line-height: 1.02;
+  --text-h2--letter-spacing: -0.045em;
+  --text-statement: clamp(2rem, 5.2vw, 5rem);
+  --text-statement--line-height: 1;
+  --text-statement--letter-spacing: -0.05em;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --color-bg: oklch(0.975 0.004 85);
+  --color-fg: oklch(0.19 0.008 60);
+  --color-muted: oklch(0.5 0.01 60);
+  --color-subtle: oklch(0.945 0.006 85);
+  --color-line: oklch(0.19 0.008 60 / 12%);
+  --color-cut: oklch(0.68 0.19 42);
+  --color-cut-fg: oklch(0.19 0.008 60);
+  --color-accent: oklch(0.19 0.008 60);
+  --color-accent-fg: oklch(0.975 0.004 85);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: oklch(0.145 0 0);
-    --color-fg: oklch(0.985 0 0);
-    --color-muted: oklch(0.708 0 0);
-    --color-subtle: oklch(0.205 0 0);
-    --color-line: oklch(1 0 0 / 12%);
-    --color-accent: oklch(0.922 0 0);
-    --color-accent-fg: oklch(0.205 0 0);
+    --color-bg: oklch(0.165 0.006 60);
+    --color-fg: oklch(0.95 0.006 85);
+    --color-muted: oklch(0.7 0.01 70);
+    --color-subtle: oklch(0.205 0.007 60);
+    --color-line: oklch(0.95 0.006 85 / 12%);
+    --color-cut: oklch(0.74 0.17 48);
+    --color-accent: oklch(0.95 0.006 85);
+    --color-accent-fg: oklch(0.165 0.006 60);
+  }
+}
+
+/* The opposite scheme, for the one full-bleed inverted section. */
+.inverse {
+  --color-bg: oklch(0.19 0.008 60);
+  --color-fg: oklch(0.95 0.006 85);
+  --color-muted: oklch(0.7 0.01 70);
+  --color-subtle: oklch(0.24 0.008 60);
+  --color-line: oklch(0.95 0.006 85 / 14%);
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+@media (prefers-color-scheme: dark) {
+  .inverse {
+    --color-bg: oklch(0.93 0.008 85);
+    --color-fg: oklch(0.19 0.008 60);
+    --color-muted: oklch(0.45 0.01 60);
+    --color-subtle: oklch(0.89 0.008 85);
+    --color-line: oklch(0.19 0.008 60 / 14%);
+    --color-cut: oklch(0.6 0.19 40);
   }
 }
 
@@ -31,4 +68,50 @@ html {
   background: var(--color-bg);
   color: var(--color-fg);
   color-scheme: light dark;
+}
+
+::selection {
+  background: var(--color-cut);
+  color: var(--color-cut-fg);
+}
+
+/* Registration ticks on the four corners of a framed element, like a drawing sheet. */
+.ticks {
+  --t: 14px;
+  background:
+    linear-gradient(var(--color-fg) 0 0) top left / var(--t) 1px,
+    linear-gradient(var(--color-fg) 0 0) top left / 1px var(--t),
+    linear-gradient(var(--color-fg) 0 0) top right / var(--t) 1px,
+    linear-gradient(var(--color-fg) 0 0) top right / 1px var(--t),
+    linear-gradient(var(--color-fg) 0 0) bottom left / var(--t) 1px,
+    linear-gradient(var(--color-fg) 0 0) bottom left / 1px var(--t),
+    linear-gradient(var(--color-fg) 0 0) bottom right / var(--t) 1px,
+    linear-gradient(var(--color-fg) 0 0) bottom right / 1px var(--t);
+  background-repeat: no-repeat;
+}
+
+/* Motion: headline lines rise out of their mask on load; sections settle in as they scroll into view. */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 1s var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 100ms);
+  }
+  .fade {
+    animation: fade 1.2s var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 300ms);
+  }
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: fade linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
+@keyframes rise {
+  from { transform: translateY(105%); }
+}
+@keyframes fade {
+  from { opacity: 0; transform: translateY(24px); }
 }

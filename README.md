@@ -34,6 +34,8 @@ Facts on the page (features, machine presets, supported controllers) must match 
 
 Deployed on Vercel as its own project, separate from the app, on `furrow.cam` (DNS on Cloudflare). Vercel detects Astro and builds `dist/` with no configuration. Set `PUBLIC_GOATCOUNTER_URL` (e.g. `https://<code>.goatcounter.com/count`, see `.env.example`) to count page views; when it is unset, as in development, nothing is counted.
 
+The hero shows the newest `@furrow/web` version, fetched from GitHub's releases at build time. The app's release workflow rebuilds the site after each web release through a Vercel deploy hook, stored in the app repository as the `SITE_DEPLOY_HOOK` secret.
+
 ## License
 
 [MIT](LICENSE) © 2026 Federico Vezzoli

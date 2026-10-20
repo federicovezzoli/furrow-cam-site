@@ -3,12 +3,17 @@ import { APP_URL, REPO_URL } from "../lib/links";
 import GitHubIcon from "./GitHubIcon.astro";
 ---
 
-<header class="border-b border-line">
-  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
-    <a href="/" class="font-semibold tracking-tight">Furrow CAM</a>
-    <nav class="flex items-center gap-5">
-      <a href={REPO_URL} class="flex items-center gap-2 text-muted hover:text-fg"><GitHubIcon />GitHub</a>
-      <a href={APP_URL} class="bg-accent px-3 py-1.5 text-accent-fg hover:opacity-90">Open the app</a>
+<header class="sticky top-0 z-20 border-b border-line bg-bg/85 backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 md:px-10">
+    <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight">
+      <span class="size-2.5 bg-cut" aria-hidden="true"></span>Furrow CAM
+    </a>
+    <nav class="flex items-center gap-5 text-sm">
+      <a href="#download" class="hidden text-muted transition-colors hover:text-fg sm:block">Desktop</a>
+      <a href={REPO_URL} class="flex items-center gap-2 text-muted transition-colors hover:text-fg"
+        ><GitHubIcon /><span class="hidden sm:inline">GitHub</span></a
+      >
+      <a href={APP_URL} class="bg-accent px-3 py-1.5 text-accent-fg transition-opacity hover:opacity-85">Open the app</a>
     </nav>
   </div>
 </header>

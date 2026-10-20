@@ -27,24 +27,35 @@ const features = [
 ];
 ---
 
-<section class="border-t border-line">
-  <div class="mx-auto max-w-5xl px-6 py-20">
-    <h2 class="text-xl font-semibold tracking-tight">From drawing to G-code</h2>
-    <div class="mt-10 grid gap-px border border-line bg-line md:grid-cols-3">
+<section>
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 py-24 md:grid-cols-12 md:gap-8 md:px-10 md:py-36">
+    <div class="md:col-span-4">
+      <div class="md:sticky md:top-28">
+        <p class="text-xs tracking-widest text-cut uppercase">OP 01 — Workflow</p>
+        <h2 class="mt-4 text-h2 font-semibold">From drawing to G&#8209;code</h2>
+        <p class="mt-6 max-w-sm text-muted">
+          Try it straight away: your projects stay in your browser until you create a free account,
+          which saves your bits, machine profiles and projects, with undo, named versions and file
+          export. Toolpaths are computed on your device, and the only personal data we
+          keep is your email address.
+        </p>
+      </div>
+    </div>
+
+    <ol class="border-b border-line md:col-span-8">
       {
-        features.map((f) => (
-          <div class="bg-bg p-6">
-            <h3 class="font-semibold">{f.title}</h3>
-            <p class="mt-2 text-muted">{f.body}</p>
-          </div>
+        features.map((f, i) => (
+          <li class="reveal group grid gap-3 border-t border-line py-8 sm:grid-cols-[5rem_1fr] md:py-10">
+            <span class="text-sm text-muted tabular-nums transition-colors group-hover:text-cut">
+              N{String((i + 1) * 10).padStart(3, "0")}
+            </span>
+            <div class="grid gap-3 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-8">
+              <h3 class="text-lg font-semibold tracking-tight">{f.title}</h3>
+              <p class="text-muted">{f.body}</p>
+            </div>
+          </li>
         ))
       }
-    </div>
-    <p class="mt-6 text-muted">
-      Try it straight away: your projects stay in your browser until you create a free account,
-      which saves your bits, machine profiles and projects, with undo, named versions and file
-      export. Toolpaths are computed on your device, and the only personal data we
-      keep is your email address.
-    </p>
+    </ol>
   </div>
 </section>

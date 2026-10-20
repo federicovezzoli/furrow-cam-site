@@ -1,42 +1,82 @@
 ---
 import { DESKTOP_DOWNLOADS, NEW_PROJECT_URL, RELEASES_URL, REPO_URL } from "../lib/links";
 import GitHubIcon from "./GitHubIcon.astro";
+
+const lines = ["2.5D CAM", "for CNC routers,", "in your browser."];
+
+// The newest web app release, fetched at build time: it stays as of the last deploy, and the badge
+// drops the version if GitHub can't be reached. `releases/latest` is whichever package went last.
+const webRelease = await fetch("https://api.github.com/repos/federicovezzoli/furrow-cam/releases?per_page=30")
+  .then((r) => (r.ok ? r.json() : []))
+  .then((list: { tag_name: string; html_url: string }[]) => list.find((r) => r.tag_name.startsWith("@furrow/web@")))
+  .catch(() => undefined);
+const webVersion = webRelease?.tag_name.split("@").pop();
 ---
 
-<section class="relative overflow-hidden border-b border-line">
-  <video
-    src="/furrow-stl-demo-161026.mp4"
-    class="absolute inset-0 h-full w-full object-cover"
-    autoplay
-    muted
-    loop
-    playsinline
-    aria-hidden="true"
-  ></video>
-  <!-- Solid behind the text, fading out to the right so the demo stays visible. -->
-  <div class="absolute inset-0 bg-bg/80 md:bg-transparent md:bg-linear-to-r md:from-bg/100 md:from-35% md:to-bg/20"></div>
-
-  <div class="relative mx-auto max-w-5xl px-6 py-24 md:py-36">
-    <a href={RELEASES_URL} class="inline-block border border-line px-2 py-0.5 text-xs text-muted hover:text-fg">
-      Alpha · open source
-    </a>
-    <h1 class="mt-6 text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-      2.5D CAM for CNC routers,<br /> in your browser.
-    </h1>
-    <p class="mt-6 max-w-xl text-base text-muted">
-      Import an SVG, DXF or STL, set up profile, pocket, drill, engrave, V-carve and 3D relief
-      operations, preview every cut, and export G-code for GRBL-compatible machines. No install and no
-      sign-up to try it, free and MIT-licensed.
-    </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href={NEW_PROJECT_URL} class="bg-accent px-4 py-2.5 text-accent-fg hover:opacity-90">Start a project</a>
-      <a id="desktop-download" href="#download" class="border border-line bg-bg px-4 py-2.5 hover:bg-subtle">Download for desktop</a>
-      <a href={REPO_URL} class="flex items-center gap-2 border border-line px-4 py-2.5 hover:bg-subtle"><GitHubIcon />View on GitHub</a>
+<section class="relative border-b border-line">
+  <div class="mx-auto max-w-7xl px-5 pt-10 pb-16 md:px-10 md:pt-16 md:pb-24">
+    <div class="fade flex items-center justify-between gap-4 text-xs text-muted">
+      <a href={webRelease?.html_url ?? RELEASES_URL} class="flex items-center gap-2 border border-line px-2 py-0.5 transition-colors hover:border-fg hover:text-fg">
+        {webVersion && <><span class="size-1.5 bg-cut" aria-hidden="true"></span><span class="text-fg tabular-nums">v{webVersion}</span><span aria-hidden="true">·</span></>}
+        Alpha · open source
+      </a>
+      <span class="hidden tabular-nums sm:block" aria-hidden="true">X 0.000 · Y 0.000 · Z 0.000</span>
     </div>
-    <p class="mt-4 text-xs text-muted">
-      Desktop app for macOS, Windows and Linux ·{" "}
-      <a href="#download" class="underline underline-offset-4 hover:text-fg">all downloads</a>
-    </p>
+
+    <h1 class="mt-8 text-display font-semibold md:mt-12">
+      {
+        lines.map((line, i) => (
+          <span class="block overflow-hidden pb-[0.06em]">
+            <span class="rise block" style={`--i:${i}`}>
+              {i === 0 ? <>2.5D CAM<span class="text-cut">_</span></> : line}
+            </span>
+          </span>
+        ))
+      }
+    </h1>
+
+    <div class="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
+      <div class="fade md:col-span-5 md:pt-2" style="--i:3">
+        <p class="max-w-md text-base text-muted md:text-[1.0625rem]">
+          Import an SVG, DXF or STL, set up profile, pocket, drill, engrave, V-carve and 3D relief
+          operations, preview every cut, and export G-code for GRBL-compatible machines. No install and no
+          sign-up to try it, free and MIT-licensed.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a
+            href={NEW_PROJECT_URL}
+            class="group flex items-center justify-between gap-6 bg-cut px-5 py-3.5 font-medium text-cut-fg transition-[gap] duration-300 ease-out-expo hover:gap-10"
+            >Start a project <span aria-hidden="true">→</span></a
+          >
+          <a id="desktop-download" href="#download" class="border border-fg/25 px-5 py-3.5 transition-colors hover:border-fg">Download for desktop</a>
+        </div>
+        <p class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted">
+          <span>macOS · Windows · Linux</span>
+          <a href="#download" class="underline underline-offset-4 hover:text-fg">all downloads</a>
+          <a href={REPO_URL} class="flex items-center gap-1.5 hover:text-fg"><GitHubIcon class="size-3.5" />View on GitHub</a>
+        </p>
+      </div>
+
+      <figure class="fade md:col-span-7" style="--i:4">
+        <div class="ticks p-2.5">
+          <div class="relative aspect-video overflow-hidden bg-subtle">
+            <video
+              src="/furrow-stl-demo-161026.mp4"
+              class="absolute inset-0 h-full w-full object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              aria-hidden="true"
+            ></video>
+          </div>
+        </div>
+        <figcaption class="mt-2 flex justify-between px-2.5 text-xs text-muted">
+          <span>Viewport · 3D relief from STL</span>
+          <span class="flex items-center gap-1.5"><span class="size-1.5 animate-pulse bg-cut" aria-hidden="true"></span>Simulating</span>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
