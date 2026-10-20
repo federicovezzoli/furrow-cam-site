@@ -15,19 +15,18 @@ const webVersion = webRelease?.tag_name.split("@").pop();
 
 <section class="relative border-b border-line">
   <div class="mx-auto max-w-7xl px-5 pt-10 pb-16 md:px-10 md:pt-16 md:pb-24">
-    <div class="fade flex items-center justify-between gap-4 text-xs text-muted">
+    <div data-hero class="flex items-center gap-4 text-xs text-muted">
       <a href={webRelease?.html_url ?? RELEASES_URL} class="flex items-center gap-2 border border-line px-2 py-0.5 transition-colors hover:border-fg hover:text-fg">
         {webVersion && <><span class="size-1.5 bg-cut" aria-hidden="true"></span><span class="text-fg tabular-nums">v{webVersion}</span><span aria-hidden="true">·</span></>}
         Alpha · open source
       </a>
-      <span class="hidden tabular-nums sm:block" aria-hidden="true">X 0.000 · Y 0.000 · Z 0.000</span>
     </div>
 
-    <h1 class="mt-8 text-display font-semibold md:mt-12">
+    <h1 data-split-hero class="mt-8 text-display font-semibold md:mt-12">
       {
         lines.map((line, i) => (
           <span class="block overflow-hidden pb-[0.06em]">
-            <span class="rise block" style={`--i:${i}`}>
+            <span class="block">
               {i === 0 ? <>2.5D CAM<span class="text-cut">_</span></> : line}
             </span>
           </span>
@@ -36,7 +35,7 @@ const webVersion = webRelease?.tag_name.split("@").pop();
     </h1>
 
     <div class="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
-      <div class="fade md:col-span-5 md:pt-2" style="--i:3">
+      <div data-hero class="md:col-span-5 md:pt-2">
         <p class="max-w-md text-base text-muted md:text-[1.0625rem]">
           Import an SVG, DXF or STL, set up profile, pocket, drill, engrave, V-carve and 3D relief
           operations, preview every cut, and export G-code for GRBL-compatible machines. No install and no
@@ -57,9 +56,9 @@ const webVersion = webRelease?.tag_name.split("@").pop();
         </p>
       </div>
 
-      <figure class="fade md:col-span-7" style="--i:4">
+      <figure data-hero class="md:col-span-7">
         <div class="ticks p-2.5">
-          <div class="relative aspect-video overflow-hidden bg-subtle">
+          <div data-wipe class="relative aspect-video overflow-hidden bg-subtle">
             <video
               src="/furrow-stl-demo-161026.mp4"
               class="absolute inset-0 h-full w-full object-cover"

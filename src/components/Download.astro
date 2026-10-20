@@ -18,19 +18,19 @@ const systems = [
 
 <section id="download" class="inverse scroll-mt-14">
   <div class="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-36">
-    <div class="reveal grid gap-8 md:grid-cols-12">
+    <div class="grid gap-8 md:grid-cols-12">
       <div class="md:col-span-6">
-        <p class="text-xs tracking-widest text-cut uppercase">OP 03 — Desktop</p>
-        <h2 class="mt-4 text-h2 font-semibold">Also on your desktop</h2>
+        <p data-scramble class="text-xs tracking-widest text-cut uppercase">OP 03 — Desktop</p>
+        <h2 data-split class="mt-4 text-h2 font-semibold">Also on your desktop</h2>
       </div>
-      <p class="text-muted md:col-span-6 md:pt-8">
+      <p data-fade class="text-muted md:col-span-6 md:pt-8">
         The same workspace as the web app, from import to G-code, for macOS, Windows and Linux. No
         account and no internet connection needed: projects are <code class="text-fg">.furrow</code> files on your
         computer, with their saved versions, and open in the web app too. Free and MIT-licensed.
       </p>
     </div>
 
-    <ul class="reveal mt-14 border-b border-line">
+    <ul data-stagger class="mt-14 border-b border-line">
       {
         systems.map((s) => (
           <li class="flex flex-col gap-3 border-t border-line py-5 sm:flex-row sm:items-center sm:justify-between">
@@ -59,7 +59,7 @@ const systems = [
       <a href={DESKTOP_RELEASES_URL} class="underline underline-offset-4 hover:text-fg">releases page</a>.
     </p>
 
-    <div class="reveal mt-20 grid gap-10 md:grid-cols-12 md:gap-8">
+    <div data-fade class="mt-20 grid gap-10 md:grid-cols-12 md:gap-8">
       <div class="md:col-span-4">
         <h3 class="text-lg font-semibold tracking-tight">First launch</h3>
         <p class="mt-3 text-sm text-muted">

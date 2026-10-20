@@ -24,11 +24,16 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <!-- Lets the CSS hide the hero until GSAP animates it in, only when motion is wanted. -->
+    <script is:inline>matchMedia("(prefers-reduced-motion: no-preference)").matches && document.documentElement.classList.add("motion");</script>
     <meta name="theme-color" content="#f8f6f2" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#141210" media="(prefers-color-scheme: dark)" />
   </head>
   <body class="min-h-screen font-sans text-[0.9375rem] leading-relaxed antialiased">
     <slot />
     <Analytics />
+    <script>
+      import "../scripts/motion";
+    </script>
   </body>
 </html>

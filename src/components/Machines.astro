@@ -10,18 +10,18 @@ const presets = [
 
 <section class="border-y border-line bg-subtle">
   <div class="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
-    <div class="reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div>
-        <p class="text-xs tracking-widest text-cut uppercase">OP 02 — Machines</p>
-        <h2 class="mt-4 text-h2 font-semibold">Ready for your machine</h2>
+        <p data-scramble class="text-xs tracking-widest text-cut uppercase">OP 02 — Machines</p>
+        <h2 data-split class="mt-4 text-h2 font-semibold">Ready for your machine</h2>
       </div>
-      <p class="max-w-md text-muted">
+      <p data-fade class="max-w-md text-muted">
         Start from a preset for a popular hobby router, with every value taken from the maker's
         documentation, or set up any GRBL-compatible router in a minute.
       </p>
     </div>
 
-    <ul class="reveal mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+    <ul data-stagger class="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
       {
         presets.map((p, i) => (
           <li class="group flex min-h-36 flex-col justify-between gap-6 bg-bg p-6 transition-colors hover:bg-subtle">

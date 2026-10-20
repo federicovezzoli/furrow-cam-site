@@ -31,8 +31,8 @@ const features = [
   <div class="mx-auto grid max-w-7xl gap-12 px-5 py-24 md:grid-cols-12 md:gap-8 md:px-10 md:py-36">
     <div class="md:col-span-4">
       <div class="md:sticky md:top-28">
-        <p class="text-xs tracking-widest text-cut uppercase">OP 01 — Workflow</p>
-        <h2 class="mt-4 text-h2 font-semibold">From drawing to G&#8209;code</h2>
+        <p data-scramble class="text-xs tracking-widest text-cut uppercase">OP 01 — Workflow</p>
+        <h2 data-split class="mt-4 text-h2 font-semibold">From drawing to G&#8209;code</h2>
         <p class="mt-6 max-w-sm text-muted">
           Try it straight away: your projects stay in your browser until you create a free account,
           which saves your bits, machine profiles and projects, with undo, named versions and file
@@ -42,10 +42,10 @@ const features = [
       </div>
     </div>
 
-    <ol class="border-b border-line md:col-span-8">
+    <ol data-stagger class="border-b border-line md:col-span-8">
       {
         features.map((f, i) => (
-          <li class="reveal group grid gap-3 border-t border-line py-8 sm:grid-cols-[5rem_1fr] md:py-10">
+          <li class="group grid gap-3 border-t border-line py-8 sm:grid-cols-[5rem_1fr] md:py-10">
             <span class="text-sm text-muted tabular-nums transition-colors group-hover:text-cut">
               N{String((i + 1) * 10).padStart(3, "0")}
             </span>

@@ -2,7 +2,7 @@
 
 The landing page of [Furrow CAM](https://github.com/federicovezzoli/furrow-cam), an open source, web-based 2.5D CAM for CNC routers. The app itself lives at [app.furrow.cam](https://app.furrow.cam) and in its own repository; this repository only holds the marketing site at [furrow.cam](https://furrow.cam).
 
-Built with [Astro](https://astro.build) and Tailwind CSS: static HTML and no JavaScript beyond a cookieless [GoatCounter](https://www.goatcounter.com) page-view beacon and a small inline script that points the hero's desktop download at the visitor's system. It uses the app's visual language (JetBrains Mono, greys, square corners) and follows the system's light or dark theme.
+Built with [Astro](https://astro.build) and Tailwind CSS: static HTML, plus a cookieless [GoatCounter](https://www.goatcounter.com) page-view beacon, a small inline script that points the hero's desktop download at the visitor's system, and [GSAP](https://gsap.com) for the scroll and lettering motion (`src/scripts/motion.ts`, skipped with reduced motion). It uses the app's visual language (JetBrains Mono, greys, square corners) and follows the system's light or dark theme.
 
 ## Development
 

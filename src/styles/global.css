@@ -90,28 +90,13 @@ html {
   background-repeat: no-repeat;
 }
 
-/* Motion: headline lines rise out of their mask on load; sections settle in as they scroll into view. */
-@media (prefers-reduced-motion: no-preference) {
-  .rise {
-    animation: rise 1s var(--ease-out-expo) both;
-    animation-delay: calc(var(--i, 0) * 90ms + 100ms);
-  }
-  .fade {
-    animation: fade 1.2s var(--ease-out-expo) both;
-    animation-delay: calc(var(--i, 0) * 90ms + 300ms);
-  }
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: fade linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 35%;
-    }
-  }
+/* Motion lives in src/scripts/motion.ts (GSAP). The hero waits hidden for it, and shows anyway
+   after 3s if the script never runs. */
+.motion [data-hero],
+.motion [data-split-hero] {
+  visibility: hidden;
+  animation: unhide 0s 3s forwards;
 }
-
-@keyframes rise {
-  from { transform: translateY(105%); }
-}
-@keyframes fade {
-  from { opacity: 0; transform: translateY(24px); }
+@keyframes unhide {
+  to { visibility: visible; }
 }
