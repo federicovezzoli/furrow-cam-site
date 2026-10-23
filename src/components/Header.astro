@@ -1,12 +1,13 @@
 ---
 import { APP_URL, REPO_URL } from "../lib/links";
 import GitHubIcon from "./GitHubIcon.astro";
+import Logo from "./Logo.astro";
 ---
 
 <header class="sticky top-0 z-20 border-b border-line bg-bg/85 backdrop-blur-md">
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 md:px-10">
     <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight">
-      <span class="size-2.5 bg-cut" aria-hidden="true"></span>Furrow CAM
+      <Logo />Furrow CAM
     </a>
     <span data-dro class="hidden text-xs whitespace-pre text-muted tabular-nums md:block" aria-hidden="true">X 0000.000 Y 0000.000 Z 0000.000</span>
     <nav class="flex items-center gap-5 text-sm">

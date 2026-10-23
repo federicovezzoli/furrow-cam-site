@@ -1,0 +1,13 @@
+---
+// The mark: an F as a round end mill would carve it (rounded ends and outer corners, sharp inner
+// ones). The middle pass is still being cut, so its tip is the tool, in "cut" orange.
+interface Props {
+  class?: string;
+}
+const { class: className = "size-5" } = Astro.props;
+---
+
+<svg viewBox="0 0 24 24" aria-hidden="true" class={className}>
+  <path d="M6 20V4h12M6 13h10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="16" cy="13" r="2" class="fill-cut" />
+</svg>
