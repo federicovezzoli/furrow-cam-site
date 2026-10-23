@@ -11,6 +11,7 @@ const systems = [
     files: [
       { url: DESKTOP_DOWNLOADS.linuxAppImage, type: ".AppImage" },
       { url: DESKTOP_DOWNLOADS.linuxDeb, type: ".deb", note: "Debian, Ubuntu" },
+      { url: DESKTOP_DOWNLOADS.linuxPacman, type: ".pacman", note: "Arch" },
     ],
   },
 ];
@@ -87,7 +88,8 @@ const systems = [
           <strong class="font-semibold">Linux</strong>
           <p class="mt-3 text-muted">
             Make the AppImage executable (<code class="text-fg">chmod +x</code>) and run it, or install the{" "}
-            <code class="text-fg">.deb</code> with <code class="break-all text-fg">sudo apt install ./furrow-cam-*.deb</code>.
+            <code class="text-fg">.deb</code> with <code class="break-all text-fg">sudo apt install ./furrow-cam-*.deb</code>, or the{" "}
+            <code class="text-fg">.pacman</code> with <code class="break-all text-fg">sudo pacman -U furrow-cam-*.pacman</code>.
           </p>
         </li>
       </ol>

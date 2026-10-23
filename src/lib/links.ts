@@ -21,4 +21,5 @@ export const DESKTOP_DOWNLOADS = {
   winX64: `${DESKTOP_DOWNLOAD_URL}/win`,
   linuxAppImage: `${DESKTOP_DOWNLOAD_URL}/linux-appimage`,
   linuxDeb: `${DESKTOP_DOWNLOAD_URL}/linux-deb`,
+  linuxPacman: `${DESKTOP_DOWNLOAD_URL}/linux-pacman`,
 };

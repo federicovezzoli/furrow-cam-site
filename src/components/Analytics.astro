@@ -5,7 +5,7 @@ const endpoint = PUBLIC_GOATCOUNTER_URL;
 ---
 
 {/*
-  Page-view counting with GoatCounter, as in the app (its ADR-0020). Sends the hit itself instead
+  Page-view counting with GoatCounter (the app moved to PostHog; the site stays on GoatCounter). Sends the hit itself instead
   of loading count.js: no third-party script, no cookies, and only the pathname, an external
   referrer's origin and the screen size are sent, never the query string or the full referrer.
 */}

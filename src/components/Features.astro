@@ -2,11 +2,15 @@
 const features = [
   {
     title: "Import your design",
-    body: "Bring SVG and DXF drawings or STL models from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool. You design elsewhere, Furrow turns it into toolpaths.",
+    body: "Bring SVG and DXF drawings or STL models from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool. Each SVG or DXF file lands as its own drawing, so one project can hold several. You design elsewhere, Furrow turns it into toolpaths.",
+  },
+  {
+    title: "Lay out the stock",
+    body: "Drag a drawing into place or type its position, set its width or height, mirror it, turn it by any angle, duplicate it or fit it to the stock with a border. Holding tabs on its paths follow along.",
   },
   {
     title: "The operations you need",
-    body: "Profiles inside, outside or on the line with depth passes, ramp entry and holding tabs. Pockets with offset, linear or peel clearing. Drilling, engraving and V-carving.",
+    body: "Profiles inside, outside or on the line with depth passes, ramp entry and holding tabs. Pockets with offset, linear or peel clearing. Drilling, engraving and V-carving. Start from a built-in catalog of flat, ball nose and V-bits with cautious feeds for wood, or add your own.",
   },
   {
     title: "3D reliefs from STL",
@@ -22,7 +26,11 @@ const features = [
   },
   {
     title: "G-code that runs",
-    body: "Output for GRBL, grblHAL and FluidNC, with optional custom start, end and tool-change blocks per machine.",
+    body: "Output for GRBL, grblHAL and FluidNC, with optional custom start, end and tool-change blocks per machine. The program waits for the spindle to reach speed before cutting, and export warns you, line by line, if a custom block would drive the bit into material.",
+  },
+  {
+    title: "In your language",
+    body: "The web and desktop apps speak English, Italian, French and German, starting in yours. Number fields take a decimal comma where you'd write one.",
   },
 ];
 ---
