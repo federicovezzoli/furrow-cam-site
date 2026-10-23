@@ -1,5 +1,5 @@
 ---
-import { AUTHOR_URL, LICENSE_URL, PRIVACY_URL, REPO_URL } from "../lib/links";
+import { AUTHOR_URL, PRIVACY_URL, REPO_URL } from "../lib/links";
 import GitHubIcon from "./GitHubIcon.astro";
 ---
 
@@ -7,8 +7,7 @@ import GitHubIcon from "./GitHubIcon.astro";
   <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-8 text-xs text-muted md:px-10">
     <p class="flex items-center gap-2.5">
       <span class="size-2 bg-cut" aria-hidden="true"></span>
-      © 2026 <a href={AUTHOR_URL} class="hover:text-fg">Federico Vezzoli</a> ·
-      <a href={LICENSE_URL} class="hover:text-fg">MIT</a>
+      © 2026 <a href={AUTHOR_URL} class="hover:text-fg">Federico Vezzoli</a>
     </p>
     <nav class="flex gap-5">
       <a href={REPO_URL} class="flex items-center gap-1.5 hover:text-fg"><GitHubIcon class="size-3.5" />GitHub</a>

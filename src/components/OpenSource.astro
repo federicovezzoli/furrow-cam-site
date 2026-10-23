@@ -8,7 +8,6 @@ import GitHubIcon from "./GitHubIcon.astro";
     <p data-scramble class="text-xs tracking-widest text-cut uppercase">OP 04 — Open source, MIT-licensed</p>
     <h2 data-scrub-words class="mt-6 max-w-5xl text-statement font-semibold">
       Every line of code and every design decision is public.
-      <span class="text-muted">Use it, fork it, host it yourself.</span>
     </h2>
 
     <ul data-stagger class="mt-16 grid gap-px border border-line bg-line md:grid-cols-3">
@@ -22,7 +21,11 @@ import GitHubIcon from "./GitHubIcon.astro";
       </li>
       <li class="bg-bg p-6">
         <span class="text-cut" aria-hidden="true">→</span>
-        <p class="mt-6">Add your router to the machine presets, with a source for every value.</p>
+        <p class="mt-6">
+          CNC not in the presets?{" "}
+          <a href={ISSUES_URL} class="underline underline-offset-4 hover:text-cut">Propose it</a>, linking the maker's
+          documentation for each spec.
+        </p>
       </li>
       <li class="bg-bg p-6">
         <span class="text-cut" aria-hidden="true">→</span>
