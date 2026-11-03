@@ -20,6 +20,22 @@ if (dro) {
   });
 }
 
+// Demo videos load and play only while on screen. With reduced motion they wait for the visitor,
+// with controls to start them.
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+for (const video of gsap.utils.toArray<HTMLVideoElement>("video[data-demo]")) {
+  if (reduceMotion) {
+    video.controls = true;
+    continue;
+  }
+  ScrollTrigger.create({
+    trigger: video,
+    start: "top bottom",
+    end: "bottom top",
+    onToggle: (self) => (self.isActive ? video.play().catch(() => {}) : video.pause()),
+  });
+}
+
 // Everything below only moves for visitors who haven't asked for reduced motion; they get the
 // static page, already fully visible.
 gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
@@ -32,9 +48,7 @@ gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
       .set(headline, { autoAlpha: 1 })
       .from(split.chars, { yPercent: 115, duration: 1.1, stagger: 0.025 });
   }
-  hero
-    .from("[data-hero]", { autoAlpha: 0, y: 24, duration: 1, stagger: 0.12 }, "-=0.7")
-    .from("[data-wipe]", { clipPath: "inset(0 100% 0 0)", duration: 1.4, ease: "power4.inOut" }, "<");
+  hero.from("[data-hero]", { autoAlpha: 0, y: 24, duration: 1, stagger: 0.12 }, "-=0.7");
 
   // Section labels decode like a terminal line when they come into view.
   for (const el of all("[data-scramble]")) {

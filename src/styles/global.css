@@ -43,7 +43,7 @@
   }
 }
 
-/* The opposite scheme, for the one full-bleed inverted section. */
+/* The opposite scheme, for full-bleed inverted sections. */
 .inverse {
   --color-bg: oklch(0.19 0.008 60);
   --color-fg: oklch(0.95 0.006 85);

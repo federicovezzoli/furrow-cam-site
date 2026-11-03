@@ -1,0 +1,98 @@
+---
+// Recorded from the web app by furrow-cam's apps/demos (`pnpm demos`), copied into public/demos/.
+const workflows = [
+  {
+    op: "OP 01 — 2D from Vector",
+    video: "svg",
+    title: "From vector to cut, in three operations",
+    body: "",
+    steps: ["Import the SVG", "Size the stock, set the zero", "Profile the outline, with tabs", "Create some pockets", "V-carve the text", "Export G-code"],
+    caption: "Operations on a vector file",
+  },
+  {
+    op: "OP 02 — 3D from STEP or STL",
+    video: "step",
+    title: "Both sides of a 3D model",
+    body: "",
+    steps: ["Import the STEP model", "Fit to the stock", "Go two-sided, lined up on pins", "Rough and finish the top", "Rough and finish the bottom", "Save the project"],
+    caption: "Double sided 3D relief",
+  },
+];
+---
+
+{
+  workflows.map((w, i) => (
+    <section id={i === 0 ? "demos" : undefined} class="scroll-mt-14 border-b border-line">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-12 md:items-center md:gap-8 md:px-10 md:py-32">
+        <div class:list={["md:col-span-4", i % 2 && "md:order-last md:col-start-9"]}>
+          <p data-scramble class="text-xs tracking-widest text-cut uppercase">{w.op}</p>
+          <h2 data-split class="mt-4 text-h2 font-semibold">{w.title}</h2>
+          <p data-fade class="mt-6 max-w-sm text-muted">{w.body}</p>
+          <ol data-stagger class="mt-8 border-b border-line text-sm">
+            {w.steps.map((step, n) => (
+              <li class="flex gap-4 border-t border-line py-2.5">
+                <span class="text-muted tabular-nums">N{String((n + 1) * 10).padStart(3, "0")}</span>
+                {step}
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <figure data-fade class:list={["md:col-span-8", i % 2 && "md:col-start-1"]}>
+          <div class="ticks p-2.5">
+            <video
+              data-demo
+              class="aspect-video w-full bg-subtle"
+              poster={`/demos/${w.video}.jpg`}
+              preload="none"
+              muted
+              loop
+              playsinline
+              aria-label={`Screen recording: ${w.steps.join(", ")}`}
+            >
+              <source src={`/demos/${w.video}.webm`} type="video/webm" />
+              <source src={`/demos/${w.video}.mp4`} type="video/mp4" />
+            </video>
+          </div>
+          <figcaption class="mt-2 px-2.5 text-xs text-muted">{w.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+  ))
+}
+
+<section class="inverse">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-32">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p data-scramble class="text-xs tracking-widest text-cut uppercase">OP 03 — Simulation</p>
+        <h2 data-split class="mt-4 max-w-2xl text-h2 font-semibold">Watch it cut before the machine does</h2>
+      </div>
+      <p data-fade class="max-w-md text-muted">
+        The simulator plays the job back move by move directly on the generated G-Code: the bit, at its real shape, carves the stock.
+      </p>
+    </div>
+
+    <figure data-fade class="mt-12 md:mt-16">
+      <div class="ticks p-2.5">
+        <video
+          data-demo
+          class="aspect-video w-full bg-subtle"
+          poster="/demos/step-simulation.jpg"
+          preload="none"
+          muted
+          loop
+          playsinline
+          aria-label="Screen recording: the simulator carving a windsurf board, top side then bottom side"
+        >
+          <source src="/demos/step-simulation.webm" type="video/webm" />
+          <source src="/demos/step-simulation.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <figcaption class="mt-2 flex justify-between px-2.5 text-xs text-muted">
+        <span>Simulator · 100×</span>
+        <span>Top side, then bottom</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
