@@ -2,7 +2,7 @@
 const features = [
   {
     title: "Import your design",
-    body: "Bring SVG and DXF drawings or STL models from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool. Each SVG or DXF file lands as its own drawing, so one project can hold several. You design elsewhere, Furrow turns it into toolpaths.",
+    body: "Bring SVG and DXF drawings or STL and STEP models from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool. Each SVG or DXF file lands as its own drawing, so one project can hold several. Add text with the bundled fonts, a single-stroke one for engraving among them, or your own. You design elsewhere, Furrow turns it into toolpaths.",
   },
   {
     title: "Lay out the stock",
@@ -10,11 +10,11 @@ const features = [
   },
   {
     title: "The operations you need",
-    body: "Profiles inside, outside or on the line with depth passes, ramp entry and holding tabs. Pockets with offset, linear or peel clearing. Drilling, engraving and V-carving. Start from a built-in catalog of flat, ball nose and V-bits with cautious feeds for wood, or add your own.",
+    body: "Profiles inside, outside or on the line with depth passes, ramp entry, holding tabs, dogbones in inside corners and the start point you choose. Pockets with offset, linear or peel clearing. Drilling, engraving and V-carving. Start from a built-in catalog of flat, ball nose and V-bits with cautious feeds for wood, or add your own.",
   },
   {
-    title: "3D reliefs from STL",
-    body: "Rough an STL model level by level, then finish it with parallel passes, waterline contours or a spiral. Stack several operations on the same model: with rest machining, each one only cuts where material is left.",
+    title: "3D reliefs, on both sides",
+    body: "Rough an STL or STEP model level by level, then finish it with parallel passes, waterline contours or a spiral. Stack several operations on the same model: with rest machining, each one only cuts where material is left. Go two-sided to flip the stock on locating pins and carve the bottom too, with one G-code file per side.",
   },
   {
     title: "Zero where you zero",
@@ -22,7 +22,7 @@ const features = [
   },
   {
     title: "Watch it cut first",
-    body: "Toolpaths in a 2D and 3D viewport, rapids and cuts shown apart. The simulator plays the job back move by move: the bit, at its real shape, carves the stock as it goes. Scrub back and forth or jump between operations.",
+    body: "Toolpaths in a 2D and 3D viewport, rapids and cuts shown apart, with an estimated machining time for each operation and the whole job. The simulator plays the job back move by move: the bit, at its real shape, carves the stock as it goes. Scrub back and forth or jump between operations.",
   },
   {
     title: "G-code that runs",
@@ -30,7 +30,7 @@ const features = [
   },
   {
     title: "In your language",
-    body: "The web and desktop apps speak English, Italian, French and German, starting in yours. Number fields take a decimal comma where you'd write one.",
+    body: "The web and desktop apps speak English, Italian, French, German, Spanish, Dutch, Portuguese, Greek, Turkish, Chinese and Japanese, starting in yours. Number fields take a decimal comma where you'd write one.",
   },
 ];
 ---
