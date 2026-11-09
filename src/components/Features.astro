@@ -1,20 +1,26 @@
 ---
+import { MCP_GUIDE_URL } from "../lib/links";
+
 const features = [
   {
     title: "Import your design",
-    body: "Bring SVG and DXF drawings or STL and STEP models from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool. Each SVG or DXF file lands as its own drawing, so one project can hold several. Add text with the bundled fonts, a single-stroke one for engraving among them, or your own. You design elsewhere, Furrow turns it into toolpaths.",
+    body: "Bring SVG and DXF drawings or STL and STEP models from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool. Each SVG or DXF file lands as its own drawing, so one project can hold several, next to a 3D model: a relief and the profile that cuts it out live together. Add text with the bundled fonts, a single-stroke one for engraving among them, or your own. You design elsewhere, Furrow turns it into toolpaths.",
   },
   {
     title: "Lay out the stock",
-    body: "Drag a drawing into place or type its position, set its width or height, mirror it, turn it by any angle, duplicate it or fit it to the stock with a border. Holding tabs on its paths follow along.",
+    body: "Drag a drawing into place or type its position, set its width or height, mirror it, turn it by any angle, duplicate it, centre it on the stock or fit it to the stock with a border. Holding tabs on its paths follow along.",
   },
   {
     title: "The operations you need",
-    body: "Profiles inside, outside or on the line with depth passes, ramp entry, holding tabs, dogbones in inside corners and the start point you choose. Pockets with offset, linear or peel clearing. Drilling, engraving and V-carving. Start from a built-in catalog of flat, ball nose and V-bits with cautious feeds for wood, or add your own.",
+    body: "Profiles inside, outside or on the line with depth passes, ramp entry, holding tabs, dogbones in inside corners and the start point you choose. Pockets with offset, linear or peel clearing. Drilling at points you click in the viewport, with snapping. Engraving and V-carving. Start from a built-in catalog of flat, ball nose and V-bits with cautious feeds for wood, or add your own.",
   },
   {
     title: "3D reliefs, on both sides",
-    body: "Rough an STL or STEP model level by level, then finish it with parallel passes, waterline contours or a spiral. Stack several operations on the same model: with rest machining, each one only cuts where material is left. Go two-sided to flip the stock on locating pins and carve the bottom too, with one G-code file per side.",
+    body: "Rough an STL or STEP model, or a terrain from a map, level by level, then finish it with parallel passes, waterline contours or a spiral. Stack several operations on the same model: with rest machining, each one only cuts where material is left. Go two-sided to flip the stock on locating pins and carve the bottom too, with one G-code file per side.",
+  },
+  {
+    title: "Carve the landscape",
+    body: "Find a place by name, coordinates or a Google Maps or OpenStreetMap link, then draw a rectangle, square, circle, ellipse or freehand area on the map. Preview the relief in 3D while you pick its size, exaggeration and base. It lands centred on the stock as a model, with its outline as a drawing for a profile to cut it out, or downloads as a closed STL for 3D printing or another CAM.",
   },
   {
     title: "Zero where you zero",
@@ -29,6 +35,11 @@ const features = [
     body: "Output for GRBL, grblHAL and FluidNC, with optional custom start, end and tool-change blocks per machine. The program waits for the spindle to reach speed before cutting, and export warns you, line by line, if a custom block would drive the bit into material.",
   },
   {
+    title: "Work with an AI assistant",
+    body: "Run npx -y @furrow-cam/mcp and Claude Desktop, Claude Code, VS Code or any MCP client can import files, add and edit operations, check toolpaths, draw a top view and export G-code on your .furrow projects. Each change shows live in the desktop app, where Help → Set Up AI Assistants… configures the clients for you.",
+    link: { href: MCP_GUIDE_URL, label: "Setup guide" },
+  },
+  {
     title: "In your language",
     body: "The web and desktop apps speak English, Italian, French, German, Spanish, Dutch, Portuguese, Greek, Turkish, Chinese and Japanese, starting in yours. Number fields take a decimal comma where you'd write one.",
   },
@@ -39,7 +50,7 @@ const features = [
   <div class="mx-auto grid max-w-7xl gap-12 px-5 py-24 md:grid-cols-12 md:gap-8 md:px-10 md:py-36">
     <div class="md:col-span-4">
       <div class="md:sticky md:top-28">
-        <p data-scramble class="text-xs tracking-widest text-cut uppercase">OP 04 — Workflow</p>
+        <p data-scramble class="text-xs tracking-widest text-cut uppercase">OP 05 — Workflow</p>
         <h2 data-split class="mt-4 text-h2 font-semibold">From drawing to G&#8209;code</h2>
         <p class="mt-6 max-w-sm text-muted">
           Try it straight away: your projects stay in your browser until you create a free account,
@@ -59,7 +70,10 @@ const features = [
             </span>
             <div class="grid gap-3 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-8">
               <h3 class="text-lg font-semibold tracking-tight">{f.title}</h3>
-              <p class="text-muted">{f.body}</p>
+              <p class="text-muted">
+                {f.body}
+                {f.link && <a href={f.link.href} class="text-fg underline underline-offset-4 hover:text-cut">{f.link.label} →</a>}
+              </p>
             </div>
           </li>
         ))

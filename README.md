@@ -19,7 +19,7 @@ pnpm preview   # serve the built site
 
 ```
 src/pages/index.astro     the page, assembled from the sections below
-src/components/           Header, Hero, Features, Machines, Download, OpenSource, Footer
+src/components/           Header, Hero, Demos, Features, Machines, Download, OpenSource, Footer
 src/layouts/Layout.astro  <head>: title, description, Open Graph
 src/lib/links.ts          every outbound URL (app, GitHub, desktop downloads and releases, privacy policy)
 src/components/Analytics.astro  GoatCounter page-view beacon
