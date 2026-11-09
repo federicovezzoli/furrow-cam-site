@@ -6,6 +6,8 @@ export const REPO_URL = "https://github.com/federicovezzoli/furrow-cam";
 export const ISSUES_URL = `${REPO_URL}/issues`;
 export const RELEASES_URL = `${REPO_URL}/releases`;
 export const LICENSE_URL = `${REPO_URL}/blob/main/LICENSE`;
+// Setting up Claude, VS Code or another MCP client to work on .furrow projects.
+export const MCP_GUIDE_URL = `${REPO_URL}/blob/main/apps/mcp/README.md`;
 export const AUTHOR_URL = "https://federicovezzoli.com";
 // The releases list filtered to the desktop app: `releases/latest` points at whichever
 // package was released last, usually @furrow/web.
