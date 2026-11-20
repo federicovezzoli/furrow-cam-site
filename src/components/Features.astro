@@ -4,23 +4,27 @@ import { MCP_GUIDE_URL } from "../lib/links";
 const features = [
   {
     title: "Import your design",
-    body: "Bring SVG and DXF drawings or STL and STEP models from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool, or turn a greyscale image into a relief, lithophanes included. One project holds as many drawings and 3D models as you need, so a relief and the profile that cuts it out live together. The Objects tab lists them all, to select, hide or lock each one. Add text with the bundled fonts, a single-stroke one for engraving among them, or your own. You design elsewhere, Furrow turns it into toolpaths.",
+    body: "Bring SVG and DXF drawings or STL and STEP models from Inkscape, Illustrator, Fusion, FreeCAD or any CAD tool, or turn a greyscale image into a relief, lithophanes included. One project holds as many drawings and 3D models as you need, so a relief and the profile that cuts it out live together. The Objects tab lists them all, to select, hide or lock each one, or download any model as STL. Add text with the bundled fonts, a single-stroke one for engraving among them, or your own. You design elsewhere, Furrow turns it into toolpaths.",
   },
   {
     title: "Lay out the stock",
     body: "Drag a drawing into place or type its position, set its width or height, mirror it, turn it by any angle, duplicate it, centre it on the stock or fit it to the stock with a border. Holding tabs on its paths follow along. A model can also sit below the stock top, to machine the whole relief deeper or leave a raised border.",
   },
   {
+    title: "Fill it with a pattern",
+    body: "Select closed paths and fill them with one of 18 patterns: grids, bricks, honeycomb, circles, lines, waves, herringbone, fish scales, Voronoi cells and more. The cells stop at the outline and holes stay empty. The settings stay editable, and the pattern follows its outline when you move, turn, mirror or resize the drawing. Convert it to a plain drawing whenever you like.",
+  },
+  {
     title: "The operations you need",
-    body: "Profiles inside, outside or on the line with depth passes, ramp entry, holding tabs, dogbones in inside corners and the start point you choose, with a plunge point beside the part for T-slot and dovetail cutters. Pockets with offset, linear or peel clearing. Drilling at points you click in the viewport, with snapping. Engraving, chamfering edges with a V-bit, V-carving and V-carve inlays: a pocket and a mirrored plug that fits it. Start from a built-in catalog of flat, ball nose, tapered ball nose and V-bits with cautious feeds for wood, or add your own.",
+    body: "Profiles inside, outside or on the line with depth passes, ramp entry, holding tabs, full height if you like, dogbones in inside corners and the start point you choose, with a plunge point beside the part for T-slot and dovetail cutters. Pockets with offset, linear or peel clearing. Drilling at points you click in the viewport, with snapping. Engraving, chamfering edges with a V-bit, V-carving and V-carve inlays: a pocket and a mirrored plug that fits it. Start from a built-in catalog of flat, ball nose, tapered ball nose and V-bits with cautious feeds for wood, or add your own.",
   },
   {
     title: "3D reliefs, on both sides",
-    body: "Rough an STL or STEP model, a terrain from a map or a relief from an image, level by level, then finish it with parallel passes, waterline contours or a spiral. Stack several operations on the same model: with rest machining, each one only cuts where material is left. Go two-sided to flip the stock on locating pins and carve the bottom too, with one G-code file per side; operations that would hit a pin warn you first.",
+    body: "Rough an STL or STEP model, a terrain from a map or a relief from an image, level by level, then finish it with parallel passes, waterline contours or a spiral. Stack several operations on the same model: with rest machining, each one only cuts where material is left. Holding tabs stand up from the stock bottom, so a model cut out all round stays put, and Furrow warns you when one has none. Go two-sided to flip the stock on locating pins and carve the bottom too, with one G-code file per side; operations that would hit a pin warn you first.",
   },
   {
     title: "Carve the landscape",
-    body: "Find a place by name, coordinates or a Google Maps or OpenStreetMap link, then draw a rectangle, square, circle, ellipse or freehand area on the map. Preview the relief in 3D while you pick its size, exaggeration and base. It lands centred on the stock as a model, or downloads as a closed STL for 3D printing or another CAM.",
+    body: "Find a place by name, coordinates or a Google Maps or OpenStreetMap link, then draw a rectangle, square, circle, ellipse or freehand area on the map. Preview the relief in 3D while you pick its size, exaggeration and base. It lands centred on the stock as a model, which you can download as a closed STL for 3D printing or another CAM, like any model.",
   },
   {
     title: "Zero where you zero",
@@ -36,7 +40,7 @@ const features = [
   },
   {
     title: "Work with an AI assistant",
-    body: "Run npx -y @furrow-cam/mcp and Claude Desktop, Claude Code, VS Code or any MCP client can import files, add and edit operations, check toolpaths, draw a top view and export G-code on your .furrow projects. Each change shows live in the desktop app, where Help → Set Up AI Assistants… configures the clients for you.",
+    body: "Run npx -y @furrow-cam/mcp and Claude Desktop, Claude Code, VS Code or any MCP client can import files, add and edit operations, fill shapes with patterns, check toolpaths, draw a top view and export G-code on your .furrow projects. Each change shows live in the desktop app, where Help → Set Up AI Assistants… configures the clients for you.",
     link: { href: MCP_GUIDE_URL, label: "Setup guide" },
   },
   {
@@ -50,7 +54,7 @@ const features = [
   <div class="mx-auto grid max-w-7xl gap-12 px-5 py-24 md:grid-cols-12 md:gap-8 md:px-10 md:py-36">
     <div class="md:col-span-4">
       <div class="md:sticky md:top-28">
-        <p data-scramble class="text-xs tracking-widest text-cut uppercase">OP 05 — Workflow</p>
+        <p data-scramble class="text-xs tracking-widest text-cut uppercase">OP 06 — Workflow</p>
         <h2 data-split class="mt-4 text-h2 font-semibold">From drawing to G&#8209;code</h2>
         <p class="mt-6 max-w-sm text-muted">
           Try it straight away: your projects stay in your browser until you create a free account,
